@@ -1,0 +1,1068 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Epi.Web.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressId" />
+    </Key>
+    <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AddressLine1" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="AddressLine2" Type="nvarchar" MaxLength="60" />
+    <Property Name="City" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="StateProvinceId" Type="int" Nullable="false" />
+    <Property Name="PostalCode" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="AdminId" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="AdminId" />
+    </Key>
+    <Property Name="AdminId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AdminEmail" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Notify" Type="bit" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="150" />
+    <Property Name="FirstName" Type="varchar" MaxLength="150" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Canvas">
+    <Key>
+      <PropertyRef Name="CanvasID" />
+    </Key>
+    <Property Name="CanvasID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CanvasGUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CanvasName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="CanvasDescription" Type="varchar(max)" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+    <Property Name="DatasourceID" Type="int" Nullable="false" />
+    <Property Name="CanvasContent" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DataAccessRules">
+    <Key>
+      <PropertyRef Name="RuleId" />
+    </Key>
+    <Property Name="RuleId" Type="int" Nullable="false" />
+    <Property Name="RuleName" Type="varchar" MaxLength="150" />
+    <Property Name="RuleDescription" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Datasource">
+    <Key>
+      <PropertyRef Name="DatasourceID" />
+    </Key>
+    <Property Name="DatasourceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DatasourceName" Type="nvarchar" MaxLength="300" />
+    <Property Name="OrganizationID" Type="int" Nullable="false" />
+    <Property Name="DatasourceServerName" Type="varchar" MaxLength="300" />
+    <Property Name="DatabaseType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="InitialCatalog" Type="varchar" MaxLength="300" />
+    <Property Name="PersistSecurityInfo" Type="varchar" MaxLength="50" />
+    <Property Name="EIWSDatasource" Type="bit" Nullable="false" />
+    <Property Name="EIWSSurveyId" Type="uniqueidentifier" />
+    <Property Name="DatabaseUserID" Type="varchar" MaxLength="200" />
+    <Property Name="Password" Type="varchar" MaxLength="200" />
+    <Property Name="DatabaseObject" Type="varchar(max)" Nullable="false" />
+    <Property Name="SQLQuery" Type="bit" />
+    <Property Name="SQLText" Type="varchar(max)" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="portnumber" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DatasourceUser">
+    <Key>
+      <PropertyRef Name="DatasourceID" />
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="DatasourceID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EIDatasource">
+    <Key>
+      <PropertyRef Name="DatasourceID" />
+    </Key>
+    <Property Name="DatasourceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DatasourceServerName" Type="varchar" MaxLength="300" />
+    <Property Name="DatabaseType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="InitialCatalog" Type="varchar" MaxLength="300" />
+    <Property Name="PersistSecurityInfo" Type="varchar" MaxLength="50" />
+    <Property Name="SurveyId" Type="uniqueidentifier" />
+    <Property Name="DatabaseUserID" Type="varchar" MaxLength="200" />
+    <Property Name="Password" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EIWeb_EIWS_QA.dbo.ErrorLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ErrorLog">
+    <Key>
+      <PropertyRef Name="ErrorDate" />
+    </Key>
+    <Property Name="ErrorDate" Type="datetime" Nullable="false" />
+    <Property Name="SurveyId" Type="uniqueidentifier" />
+    <Property Name="ResponseId" Type="uniqueidentifier" />
+    <Property Name="Comment" Type="varchar(max)" />
+    <Property Name="ERROR_NUMBER" Type="int" />
+    <Property Name="ERROR_MESSAGE" Type="nvarchar" MaxLength="4000" />
+    <Property Name="ERROR_SEVERITY" Type="int" />
+    <Property Name="ERROR_STATE" Type="int" />
+    <Property Name="ERROR_PROCEDURE" Type="nvarchar" MaxLength="1128" />
+    <Property Name="ERROR_LINE" Type="int" />
+    <Property Name="ErrorText" Type="nvarchar(max)" />
+    <Property Name="ErrorText2" Type="nvarchar(max)" />
+    <Property Name="XML" Type="xml" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EIWeb_EIWS_QA.dbo.familyset' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="familyset">
+    <Key>
+      <PropertyRef Name="SurveyId" />
+      <PropertyRef Name="OwnerId" />
+      <PropertyRef Name="SurveyTypeId" />
+      <PropertyRef Name="ClosingDate" />
+      <PropertyRef Name="SurveyName" />
+      <PropertyRef Name="TemplateXML" />
+      <PropertyRef Name="UserPublishKey" />
+      <PropertyRef Name="TemplateXMLSize" />
+      <PropertyRef Name="DateCreated" />
+      <PropertyRef Name="OrganizationId" />
+      <PropertyRef Name="IsDraftMode" />
+      <PropertyRef Name="StartDate" />
+    </Key>
+    <Property Name="SurveyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OwnerId" Type="int" Nullable="false" />
+    <Property Name="SurveyNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="SurveyTypeId" Type="int" Nullable="false" />
+    <Property Name="ClosingDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="SurveyName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="OrganizationName" Type="nvarchar" MaxLength="500" />
+    <Property Name="DepartmentName" Type="nvarchar" MaxLength="500" />
+    <Property Name="IntroductionText" Type="nvarchar(max)" />
+    <Property Name="TemplateXML" Type="xml" Nullable="false" />
+    <Property Name="ExitText" Type="nvarchar(max)" />
+    <Property Name="UserPublishKey" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TemplateXMLSize" Type="bigint" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+    <Property Name="IsDraftMode" Type="bit" Nullable="false" />
+    <Property Name="StartDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ParentId" Type="uniqueidentifier" />
+    <Property Name="ViewId" Type="int" />
+    <Property Name="IsSQLProject" Type="bit" />
+  </EntityType>
+  <EntityType Name="lk_RecordSource">
+    <Key>
+      <PropertyRef Name="RecordSourceId" />
+    </Key>
+    <Property Name="RecordSourceId" Type="int" Nullable="false" />
+    <Property Name="RecordSource" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RecordSourceDescription" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="lk_Status">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="int" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="lk_SurveyType">
+    <Key>
+      <PropertyRef Name="SurveyTypeId" />
+    </Key>
+    <Property Name="SurveyTypeId" Type="int" Nullable="false" />
+    <Property Name="SurveyType" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Organization">
+    <Key>
+      <PropertyRef Name="OrganizationId" />
+    </Key>
+    <Property Name="OrganizationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationKey" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Organization" Type="nvarchar" MaxLength="400" Nullable="false" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="IsHostOrganization" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ResponseDisplaySettings">
+    <Key>
+      <PropertyRef Name="FormId" />
+      <PropertyRef Name="ColumnName" />
+    </Key>
+    <Property Name="FormId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ColumnName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ResponseXml">
+    <Key>
+      <PropertyRef Name="ResponseId" />
+    </Key>
+    <Property Name="ResponseId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Xml" Type="xml" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="IsNewRecord" Type="bit" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleValue" Type="int" Nullable="false" />
+    <Property Name="RoleDescription" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SharedCanvases">
+    <Key>
+      <PropertyRef Name="CanvasID" />
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="CanvasID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SourceTables">
+    <Key>
+      <PropertyRef Name="SourceTableName" />
+      <PropertyRef Name="FormId" />
+    </Key>
+    <Property Name="SourceTableName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="FormId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SourceTableXml" Type="xml" Nullable="false" />
+  </EntityType>
+  <EntityType Name="States">
+    <Key>
+      <PropertyRef Name="StateProvinceId" />
+    </Key>
+    <Property Name="StateProvinceId" Type="int" Nullable="false" />
+    <Property Name="StateCode" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="StateName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SurveyMetaData">
+    <Key>
+      <PropertyRef Name="SurveyId" />
+    </Key>
+    <Property Name="SurveyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OwnerId" Type="int" Nullable="false" />
+    <Property Name="SurveyNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="SurveyTypeId" Type="int" Nullable="false" />
+    <Property Name="ClosingDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="SurveyName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="OrganizationName" Type="nvarchar" MaxLength="500" />
+    <Property Name="DepartmentName" Type="nvarchar" MaxLength="500" />
+    <Property Name="IntroductionText" Type="nvarchar(max)" />
+    <Property Name="TemplateXML" Type="xml" Nullable="false" />
+    <Property Name="ExitText" Type="nvarchar(max)" />
+    <Property Name="UserPublishKey" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TemplateXMLSize" Type="bigint" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+    <Property Name="IsDraftMode" Type="bit" Nullable="false" />
+    <Property Name="StartDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="ParentId" Type="uniqueidentifier" />
+    <Property Name="ViewId" Type="int" />
+    <Property Name="IsSQLProject" Type="bit" />
+    <Property Name="IsShareable" Type="bit" />
+    <Property Name="ShowAllRecords" Type="bit" />
+    <Property Name="DataAccessRuleId" Type="int" />
+    <Property Name="LastUpdate" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="SurveyMetadataOrganization">
+    <Key>
+      <PropertyRef Name="SurveyId" />
+      <PropertyRef Name="OrganizationId" />
+    </Key>
+    <Property Name="SurveyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OrganizationId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EIWeb_EIWS_QA.dbo.SurveyMetaDataTransform' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SurveyMetaDataTransform">
+    <Key>
+      <PropertyRef Name="SurveyId" />
+      <PropertyRef Name="TableName" />
+      <PropertyRef Name="FieldName" />
+      <PropertyRef Name="FieldTypeId" />
+    </Key>
+    <Property Name="SurveyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TableName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="BaseTableName" Type="nvarchar" MaxLength="500" />
+    <Property Name="PageId" Type="int" />
+    <Property Name="FieldName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="FieldTypeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SurveyMetaDataUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="FormId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="FormId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SurveyMetaDataView">
+    <Key>
+      <PropertyRef Name="SurveyId" />
+    </Key>
+    <Property Name="SurveyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ViewTableName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SurveyResponse">
+    <Key>
+      <PropertyRef Name="ResponseId" />
+    </Key>
+    <Property Name="ResponseId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SurveyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DateUpdated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="DateCompleted" Type="datetime2" Precision="7" />
+    <Property Name="StatusId" Type="int" Nullable="false" />
+    <Property Name="ResponseXML" Type="xml" Nullable="false" />
+    <Property Name="ResponsePasscode" Type="nvarchar" MaxLength="30" />
+    <Property Name="ResponseXMLSize" Type="bigint" />
+    <Property Name="DateCreated" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="IsDraftMode" Type="bit" Nullable="false" />
+    <Property Name="IsLocked" Type="bit" Nullable="false" />
+    <Property Name="ParentRecordId" Type="uniqueidentifier" />
+    <Property Name="RelateParentId" Type="uniqueidentifier" />
+    <Property Name="RecordSourceId" Type="int" />
+    <Property Name="OrganizationId" Type="int" />
+  </EntityType>
+  <EntityType Name="SurveyResponseTracking">
+    <Key>
+      <PropertyRef Name="ResponseId" />
+    </Key>
+    <Property Name="ResponseId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsSQLResponse" Type="bit" Nullable="false" />
+    <Property Name="IsResponseinsertedToEpi7" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SurveyResponseUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="ResponseId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="ResponseId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PasswordHash" Type="varchar(max)" Nullable="false" />
+    <Property Name="ResetPassword" Type="bit" Nullable="false" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UGuid" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="UserOrganization">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="OrganizationID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="OrganizationID" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EIWeb_EIWS_QA.dbo.vwCanvasShare' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwCanvasShare">
+    <Key>
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="CanvasID" />
+      <PropertyRef Name="CanvasName" />
+      <PropertyRef Name="CreatedDate" />
+      <PropertyRef Name="ModifiedDate" />
+      <PropertyRef Name="CanvasContent" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="DatasourceID" />
+      <PropertyRef Name="OrganizationID" />
+      <PropertyRef Name="CanvasGUID" />
+    </Key>
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DatasourceName" Type="nvarchar" MaxLength="300" />
+    <Property Name="CanvasID" Type="int" Nullable="false" />
+    <Property Name="CanvasName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CanvasDescription" Type="varchar(max)" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+    <Property Name="CanvasContent" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DatasourceID" Type="int" Nullable="false" />
+    <Property Name="OrganizationID" Type="int" Nullable="false" />
+    <Property Name="CanvasGUID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EIWeb_EIWS_QA.dbo.vwCanvasUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwCanvasUser">
+    <Key>
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="CanvasID" />
+      <PropertyRef Name="CanvasName" />
+      <PropertyRef Name="CreatedDate" />
+      <PropertyRef Name="ModifiedDate" />
+      <PropertyRef Name="CanvasContent" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="DatasourceID" />
+      <PropertyRef Name="OrganizationID" />
+      <PropertyRef Name="CanvasGUID" />
+    </Key>
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DatasourceName" Type="nvarchar" MaxLength="300" />
+    <Property Name="CanvasID" Type="int" Nullable="false" />
+    <Property Name="CanvasName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CanvasDescription" Type="varchar(max)" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+    <Property Name="CanvasContent" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DatasourceID" Type="int" Nullable="false" />
+    <Property Name="OrganizationID" Type="int" Nullable="false" />
+    <Property Name="CanvasGUID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EIWeb_EIWS_QA.dbo.vwOrgsForUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwOrgsForUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="OrganizationID" />
+      <PropertyRef Name="Organization" />
+      <PropertyRef Name="RoleID" />
+      <PropertyRef Name="Active" />
+      <PropertyRef Name="IsOrgActive" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="OrganizationID" Type="int" Nullable="false" />
+    <Property Name="Organization" Type="nvarchar" MaxLength="400" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="IsOrgActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EIWeb_EIWS_QA.dbo.vwUserOrganizationUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwUserOrganizationUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="RoleID" />
+      <PropertyRef Name="EmailAddress" />
+      <PropertyRef Name="PhoneNumber" />
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="PasswordHash" />
+      <PropertyRef Name="ResetPassword" />
+      <PropertyRef Name="OrganizationID" />
+      <PropertyRef Name="RoleValue" />
+      <PropertyRef Name="RoleDescription" />
+      <PropertyRef Name="Active" />
+      <PropertyRef Name="IsOrgActive" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PasswordHash" Type="varchar(max)" Nullable="false" />
+    <Property Name="ResetPassword" Type="bit" Nullable="false" />
+    <Property Name="OrganizationID" Type="int" Nullable="false" />
+    <Property Name="RoleValue" Type="int" Nullable="false" />
+    <Property Name="RoleDescription" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="IsOrgActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Address_Admin">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+    <End Role="Address" Type="Self.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="AdminId" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="AdminId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Admin_Organization">
+    <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Canvas _Datasource">
+    <End Role="Datasource" Type="Self.Datasource" Multiplicity="1" />
+    <End Role="Canvas" Type="Self.Canvas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datasource">
+        <PropertyRef Name="DatasourceID" />
+      </Principal>
+      <Dependent Role="Canvas">
+        <PropertyRef Name="DatasourceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Canvas_CreatorUser">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Canvas" Type="Self.Canvas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Canvas">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CanvasUser_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="SharedCanvases" Type="Self.SharedCanvases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="SharedCanvases">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Datasource_Organization">
+    <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+    <End Role="Datasource" Type="Self.Datasource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="Datasource">
+        <PropertyRef Name="OrganizationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Datasource_SurveyMetaData">
+    <End Role="SurveyMetaData" Type="Self.SurveyMetaData" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EIDatasource" Type="Self.EIDatasource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyMetaData">
+        <PropertyRef Name="SurveyId" />
+      </Principal>
+      <Dependent Role="EIDatasource">
+        <PropertyRef Name="SurveyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DatasourceUser_Datasource">
+    <End Role="Datasource" Type="Self.Datasource" Multiplicity="1" />
+    <End Role="DatasourceUser" Type="Self.DatasourceUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datasource">
+        <PropertyRef Name="DatasourceID" />
+      </Principal>
+      <Dependent Role="DatasourceUser">
+        <PropertyRef Name="DatasourceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DatasourceUser_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="DatasourceUser" Type="Self.DatasourceUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="DatasourceUser">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResponseGridcolumns_SurveyMetaData">
+    <End Role="SurveyMetaData" Type="Self.SurveyMetaData" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ResponseDisplaySettings" Type="Self.ResponseDisplaySettings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyMetaData">
+        <PropertyRef Name="SurveyId" />
+      </Principal>
+      <Dependent Role="ResponseDisplaySettings">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyMetaData_lk_SurveyType">
+    <End Role="lk_SurveyType" Type="Self.lk_SurveyType" Multiplicity="1" />
+    <End Role="SurveyMetaData" Type="Self.SurveyMetaData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lk_SurveyType">
+        <PropertyRef Name="SurveyTypeId" />
+      </Principal>
+      <Dependent Role="SurveyMetaData">
+        <PropertyRef Name="SurveyTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyMetaData_Organization">
+    <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+    <End Role="SurveyMetaData" Type="Self.SurveyMetaData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="SurveyMetaData">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyMetadataOrganization_Organization">
+    <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+    <End Role="SurveyMetadataOrganization" Type="Self.SurveyMetadataOrganization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="SurveyMetadataOrganization">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyMetadataOrganization_SurveyMetaData">
+    <End Role="SurveyMetaData" Type="Self.SurveyMetaData" Multiplicity="1" />
+    <End Role="SurveyMetadataOrganization" Type="Self.SurveyMetadataOrganization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyMetaData">
+        <PropertyRef Name="SurveyId" />
+      </Principal>
+      <Dependent Role="SurveyMetadataOrganization">
+        <PropertyRef Name="SurveyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyMetaDataTransform_SurveyMetaData">
+    <End Role="SurveyMetaData" Type="Self.SurveyMetaData" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SurveyMetaDataTransform" Type="Self.SurveyMetaDataTransform" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyMetaData">
+        <PropertyRef Name="SurveyId" />
+      </Principal>
+      <Dependent Role="SurveyMetaDataTransform">
+        <PropertyRef Name="SurveyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyMetaDataUser_SurveyMetaData">
+    <End Role="SurveyMetaData" Type="Self.SurveyMetaData" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SurveyMetaDataUser" Type="Self.SurveyMetaDataUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyMetaData">
+        <PropertyRef Name="SurveyId" />
+      </Principal>
+      <Dependent Role="SurveyMetaDataUser">
+        <PropertyRef Name="FormId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyMetaDataUser_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="SurveyMetaDataUser" Type="Self.SurveyMetaDataUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="SurveyMetaDataUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyResponse_lk_RecordSource">
+    <End Role="lk_RecordSource" Type="Self.lk_RecordSource" Multiplicity="0..1" />
+    <End Role="SurveyResponse" Type="Self.SurveyResponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lk_RecordSource">
+        <PropertyRef Name="RecordSourceId" />
+      </Principal>
+      <Dependent Role="SurveyResponse">
+        <PropertyRef Name="RecordSourceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyResponse_lk_Status">
+    <End Role="lk_Status" Type="Self.lk_Status" Multiplicity="1" />
+    <End Role="SurveyResponse" Type="Self.SurveyResponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lk_Status">
+        <PropertyRef Name="StatusId" />
+      </Principal>
+      <Dependent Role="SurveyResponse">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyResponse_SurveyMetaData">
+    <End Role="SurveyMetaData" Type="Self.SurveyMetaData" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SurveyResponse" Type="Self.SurveyResponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyMetaData">
+        <PropertyRef Name="SurveyId" />
+      </Principal>
+      <Dependent Role="SurveyResponse">
+        <PropertyRef Name="SurveyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyResponse_SurveyResponse">
+    <End Role="SurveyResponse" Type="Self.SurveyResponse" Multiplicity="0..1" />
+    <End Role="SurveyResponse1" Type="Self.SurveyResponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyResponse">
+        <PropertyRef Name="ResponseId" />
+      </Principal>
+      <Dependent Role="SurveyResponse1">
+        <PropertyRef Name="RelateParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyResponseTracking_SurveyResponse">
+    <End Role="SurveyResponse" Type="Self.SurveyResponse" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SurveyResponseTracking" Type="Self.SurveyResponseTracking" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyResponse">
+        <PropertyRef Name="ResponseId" />
+      </Principal>
+      <Dependent Role="SurveyResponseTracking">
+        <PropertyRef Name="ResponseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyResponseUser_SurveyResponse">
+    <End Role="SurveyResponse" Type="Self.SurveyResponse" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SurveyResponseUser" Type="Self.SurveyResponseUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyResponse">
+        <PropertyRef Name="ResponseId" />
+      </Principal>
+      <Dependent Role="SurveyResponseUser">
+        <PropertyRef Name="ResponseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyResponseUser_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="SurveyResponseUser" Type="Self.SurveyResponseUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="SurveyResponseUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserOrganization_Organization">
+    <End Role="Organization" Type="Self.Organization" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserOrganization" Type="Self.UserOrganization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="UserOrganization">
+        <PropertyRef Name="OrganizationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserOrganization_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="UserOrganization" Type="Self.UserOrganization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="UserOrganization">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserOrganization_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserOrganization" Type="Self.UserOrganization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserOrganization">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EpiWebModelStoreContainer">
+    <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Canvas" EntityType="Self.Canvas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DataAccessRules" EntityType="Self.DataAccessRules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Datasource" EntityType="Self.Datasource" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DatasourceUser" EntityType="Self.DatasourceUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EIDatasource" EntityType="Self.EIDatasource" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lk_RecordSource" EntityType="Self.lk_RecordSource" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lk_Status" EntityType="Self.lk_Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lk_SurveyType" EntityType="Self.lk_SurveyType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResponseDisplaySettings" EntityType="Self.ResponseDisplaySettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResponseXml" EntityType="Self.ResponseXml" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SharedCanvases" EntityType="Self.SharedCanvases" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SourceTables" EntityType="Self.SourceTables" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyMetaData" EntityType="Self.SurveyMetaData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyMetadataOrganization" EntityType="Self.SurveyMetadataOrganization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyMetaDataUser" EntityType="Self.SurveyMetaDataUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyMetaDataView" EntityType="Self.SurveyMetaDataView" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyResponse" EntityType="Self.SurveyResponse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyResponseTracking" EntityType="Self.SurveyResponseTracking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyResponseUser" EntityType="Self.SurveyResponseUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserOrganization" EntityType="Self.UserOrganization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ErrorLog].[ErrorDate] AS [ErrorDate], 
+    [ErrorLog].[SurveyId] AS [SurveyId], 
+    [ErrorLog].[ResponseId] AS [ResponseId], 
+    [ErrorLog].[Comment] AS [Comment], 
+    [ErrorLog].[ERROR_NUMBER] AS [ERROR_NUMBER], 
+    [ErrorLog].[ERROR_MESSAGE] AS [ERROR_MESSAGE], 
+    [ErrorLog].[ERROR_SEVERITY] AS [ERROR_SEVERITY], 
+    [ErrorLog].[ERROR_STATE] AS [ERROR_STATE], 
+    [ErrorLog].[ERROR_PROCEDURE] AS [ERROR_PROCEDURE], 
+    [ErrorLog].[ERROR_LINE] AS [ERROR_LINE], 
+    [ErrorLog].[ErrorText] AS [ErrorText], 
+    [ErrorLog].[ErrorText2] AS [ErrorText2], 
+    [ErrorLog].[XML] AS [XML]
+    FROM [dbo].[ErrorLog] AS [ErrorLog]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="familyset" EntityType="Self.familyset" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [familyset].[SurveyId] AS [SurveyId], 
+    [familyset].[OwnerId] AS [OwnerId], 
+    [familyset].[SurveyNumber] AS [SurveyNumber], 
+    [familyset].[SurveyTypeId] AS [SurveyTypeId], 
+    [familyset].[ClosingDate] AS [ClosingDate], 
+    [familyset].[SurveyName] AS [SurveyName], 
+    [familyset].[OrganizationName] AS [OrganizationName], 
+    [familyset].[DepartmentName] AS [DepartmentName], 
+    [familyset].[IntroductionText] AS [IntroductionText], 
+    [familyset].[TemplateXML] AS [TemplateXML], 
+    [familyset].[ExitText] AS [ExitText], 
+    [familyset].[UserPublishKey] AS [UserPublishKey], 
+    [familyset].[TemplateXMLSize] AS [TemplateXMLSize], 
+    [familyset].[DateCreated] AS [DateCreated], 
+    [familyset].[OrganizationId] AS [OrganizationId], 
+    [familyset].[IsDraftMode] AS [IsDraftMode], 
+    [familyset].[StartDate] AS [StartDate], 
+    [familyset].[ParentId] AS [ParentId], 
+    [familyset].[ViewId] AS [ViewId], 
+    [familyset].[IsSQLProject] AS [IsSQLProject]
+    FROM [dbo].[familyset] AS [familyset]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SurveyMetaDataTransform" EntityType="Self.SurveyMetaDataTransform" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SurveyMetaDataTransform].[SurveyId] AS [SurveyId], 
+    [SurveyMetaDataTransform].[TableName] AS [TableName], 
+    [SurveyMetaDataTransform].[BaseTableName] AS [BaseTableName], 
+    [SurveyMetaDataTransform].[PageId] AS [PageId], 
+    [SurveyMetaDataTransform].[FieldName] AS [FieldName], 
+    [SurveyMetaDataTransform].[FieldTypeId] AS [FieldTypeId]
+    FROM [dbo].[SurveyMetaDataTransform] AS [SurveyMetaDataTransform]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwCanvasShare" EntityType="Self.vwCanvasShare" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwCanvasShare].[UserName] AS [UserName], 
+    [vwCanvasShare].[DatasourceName] AS [DatasourceName], 
+    [vwCanvasShare].[CanvasID] AS [CanvasID], 
+    [vwCanvasShare].[CanvasName] AS [CanvasName], 
+    [vwCanvasShare].[CanvasDescription] AS [CanvasDescription], 
+    [vwCanvasShare].[CreatedDate] AS [CreatedDate], 
+    [vwCanvasShare].[ModifiedDate] AS [ModifiedDate], 
+    [vwCanvasShare].[CanvasContent] AS [CanvasContent], 
+    [vwCanvasShare].[UserID] AS [UserID], 
+    [vwCanvasShare].[FirstName] AS [FirstName], 
+    [vwCanvasShare].[LastName] AS [LastName], 
+    [vwCanvasShare].[DatasourceID] AS [DatasourceID], 
+    [vwCanvasShare].[OrganizationID] AS [OrganizationID], 
+    [vwCanvasShare].[CanvasGUID] AS [CanvasGUID]
+    FROM [dbo].[vwCanvasShare] AS [vwCanvasShare]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwCanvasUser" EntityType="Self.vwCanvasUser" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwCanvasUser].[UserName] AS [UserName], 
+    [vwCanvasUser].[DatasourceName] AS [DatasourceName], 
+    [vwCanvasUser].[CanvasID] AS [CanvasID], 
+    [vwCanvasUser].[CanvasName] AS [CanvasName], 
+    [vwCanvasUser].[CanvasDescription] AS [CanvasDescription], 
+    [vwCanvasUser].[CreatedDate] AS [CreatedDate], 
+    [vwCanvasUser].[ModifiedDate] AS [ModifiedDate], 
+    [vwCanvasUser].[CanvasContent] AS [CanvasContent], 
+    [vwCanvasUser].[UserID] AS [UserID], 
+    [vwCanvasUser].[FirstName] AS [FirstName], 
+    [vwCanvasUser].[LastName] AS [LastName], 
+    [vwCanvasUser].[DatasourceID] AS [DatasourceID], 
+    [vwCanvasUser].[OrganizationID] AS [OrganizationID], 
+    [vwCanvasUser].[CanvasGUID] AS [CanvasGUID]
+    FROM [dbo].[vwCanvasUser] AS [vwCanvasUser]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwOrgsForUser" EntityType="Self.vwOrgsForUser" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwOrgsForUser].[UserID] AS [UserID], 
+    [vwOrgsForUser].[OrganizationID] AS [OrganizationID], 
+    [vwOrgsForUser].[Organization] AS [Organization], 
+    [vwOrgsForUser].[RoleID] AS [RoleID], 
+    [vwOrgsForUser].[Active] AS [Active], 
+    [vwOrgsForUser].[IsOrgActive] AS [IsOrgActive]
+    FROM [dbo].[vwOrgsForUser] AS [vwOrgsForUser]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vwUserOrganizationUser" EntityType="Self.vwUserOrganizationUser" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwUserOrganizationUser].[UserID] AS [UserID], 
+    [vwUserOrganizationUser].[RoleID] AS [RoleID], 
+    [vwUserOrganizationUser].[EmailAddress] AS [EmailAddress], 
+    [vwUserOrganizationUser].[PhoneNumber] AS [PhoneNumber], 
+    [vwUserOrganizationUser].[UserName] AS [UserName], 
+    [vwUserOrganizationUser].[FirstName] AS [FirstName], 
+    [vwUserOrganizationUser].[LastName] AS [LastName], 
+    [vwUserOrganizationUser].[PasswordHash] AS [PasswordHash], 
+    [vwUserOrganizationUser].[ResetPassword] AS [ResetPassword], 
+    [vwUserOrganizationUser].[OrganizationID] AS [OrganizationID], 
+    [vwUserOrganizationUser].[RoleValue] AS [RoleValue], 
+    [vwUserOrganizationUser].[RoleDescription] AS [RoleDescription], 
+    [vwUserOrganizationUser].[Active] AS [Active], 
+    [vwUserOrganizationUser].[IsOrgActive] AS [IsOrgActive]
+    FROM [dbo].[vwUserOrganizationUser] AS [vwUserOrganizationUser]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Address_Admin" Association="Self.FK_Address_Admin">
+      <End Role="Admin" EntitySet="Admin" />
+      <End Role="Address" EntitySet="Address" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Admin_Organization" Association="Self.FK_Admin_Organization">
+      <End Role="Organization" EntitySet="Organization" />
+      <End Role="Admin" EntitySet="Admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Canvas _Datasource" Association="Self.FK_Canvas _Datasource">
+      <End Role="Datasource" EntitySet="Datasource" />
+      <End Role="Canvas" EntitySet="Canvas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Canvas_CreatorUser" Association="Self.FK_Canvas_CreatorUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="Canvas" EntitySet="Canvas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CanvasUser_User" Association="Self.FK_CanvasUser_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="SharedCanvases" EntitySet="SharedCanvases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Datasource_Organization" Association="Self.FK_Datasource_Organization">
+      <End Role="Organization" EntitySet="Organization" />
+      <End Role="Datasource" EntitySet="Datasource" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Datasource_SurveyMetaData" Association="Self.FK_Datasource_SurveyMetaData">
+      <End Role="SurveyMetaData" EntitySet="SurveyMetaData" />
+      <End Role="EIDatasource" EntitySet="EIDatasource" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DatasourceUser_Datasource" Association="Self.FK_DatasourceUser_Datasource">
+      <End Role="Datasource" EntitySet="Datasource" />
+      <End Role="DatasourceUser" EntitySet="DatasourceUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DatasourceUser_User" Association="Self.FK_DatasourceUser_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="DatasourceUser" EntitySet="DatasourceUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResponseGridcolumns_SurveyMetaData" Association="Self.FK_ResponseGridcolumns_SurveyMetaData">
+      <End Role="SurveyMetaData" EntitySet="SurveyMetaData" />
+      <End Role="ResponseDisplaySettings" EntitySet="ResponseDisplaySettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyMetaData_lk_SurveyType" Association="Self.FK_SurveyMetaData_lk_SurveyType">
+      <End Role="lk_SurveyType" EntitySet="lk_SurveyType" />
+      <End Role="SurveyMetaData" EntitySet="SurveyMetaData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyMetaData_Organization" Association="Self.FK_SurveyMetaData_Organization">
+      <End Role="Organization" EntitySet="Organization" />
+      <End Role="SurveyMetaData" EntitySet="SurveyMetaData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyMetadataOrganization_Organization" Association="Self.FK_SurveyMetadataOrganization_Organization">
+      <End Role="Organization" EntitySet="Organization" />
+      <End Role="SurveyMetadataOrganization" EntitySet="SurveyMetadataOrganization" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyMetadataOrganization_SurveyMetaData" Association="Self.FK_SurveyMetadataOrganization_SurveyMetaData">
+      <End Role="SurveyMetaData" EntitySet="SurveyMetaData" />
+      <End Role="SurveyMetadataOrganization" EntitySet="SurveyMetadataOrganization" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyMetaDataTransform_SurveyMetaData" Association="Self.FK_SurveyMetaDataTransform_SurveyMetaData">
+      <End Role="SurveyMetaData" EntitySet="SurveyMetaData" />
+      <End Role="SurveyMetaDataTransform" EntitySet="SurveyMetaDataTransform" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyMetaDataUser_SurveyMetaData" Association="Self.FK_SurveyMetaDataUser_SurveyMetaData">
+      <End Role="SurveyMetaData" EntitySet="SurveyMetaData" />
+      <End Role="SurveyMetaDataUser" EntitySet="SurveyMetaDataUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyMetaDataUser_User" Association="Self.FK_SurveyMetaDataUser_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="SurveyMetaDataUser" EntitySet="SurveyMetaDataUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyResponse_lk_RecordSource" Association="Self.FK_SurveyResponse_lk_RecordSource">
+      <End Role="lk_RecordSource" EntitySet="lk_RecordSource" />
+      <End Role="SurveyResponse" EntitySet="SurveyResponse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyResponse_lk_Status" Association="Self.FK_SurveyResponse_lk_Status">
+      <End Role="lk_Status" EntitySet="lk_Status" />
+      <End Role="SurveyResponse" EntitySet="SurveyResponse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyResponse_SurveyMetaData" Association="Self.FK_SurveyResponse_SurveyMetaData">
+      <End Role="SurveyMetaData" EntitySet="SurveyMetaData" />
+      <End Role="SurveyResponse" EntitySet="SurveyResponse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyResponse_SurveyResponse" Association="Self.FK_SurveyResponse_SurveyResponse">
+      <End Role="SurveyResponse" EntitySet="SurveyResponse" />
+      <End Role="SurveyResponse1" EntitySet="SurveyResponse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyResponseTracking_SurveyResponse" Association="Self.FK_SurveyResponseTracking_SurveyResponse">
+      <End Role="SurveyResponse" EntitySet="SurveyResponse" />
+      <End Role="SurveyResponseTracking" EntitySet="SurveyResponseTracking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyResponseUser_SurveyResponse" Association="Self.FK_SurveyResponseUser_SurveyResponse">
+      <End Role="SurveyResponse" EntitySet="SurveyResponse" />
+      <End Role="SurveyResponseUser" EntitySet="SurveyResponseUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyResponseUser_User" Association="Self.FK_SurveyResponseUser_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="SurveyResponseUser" EntitySet="SurveyResponseUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserOrganization_Organization" Association="Self.FK_UserOrganization_Organization">
+      <End Role="Organization" EntitySet="Organization" />
+      <End Role="UserOrganization" EntitySet="UserOrganization" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserOrganization_Role" Association="Self.FK_UserOrganization_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserOrganization" EntitySet="UserOrganization" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserOrganization_User" Association="Self.FK_UserOrganization_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserOrganization" EntitySet="UserOrganization" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

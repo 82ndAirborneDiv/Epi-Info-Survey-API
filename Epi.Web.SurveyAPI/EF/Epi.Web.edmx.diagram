@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cba4381e96304c2bbc9e497e50c588c1" Name="Diagram1">
+        <EntityTypeShape EntityType="EIWSModel.Address" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.Admin" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.Canva" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.DataAccessRule" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.Datasource" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.EIDatasource" Width="1.5" PointX="10.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.lk_RecordSource" Width="1.5" PointX="11" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.lk_Status" Width="1.5" PointX="11" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.lk_SurveyType" Width="1.5" PointX="5.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.Organization" Width="1.5" PointX="0.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.ResponseDisplaySetting" Width="1.5" PointX="10.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.ResponseXml" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.Role" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.SharedCanvas" Width="1.5" PointX="10.5" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.SourceTable" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.State" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.SurveyMetaData" Width="1.5" PointX="8" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.SurveyMetaDataView" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.SurveyResponse" Width="1.5" PointX="13.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.SurveyResponseTracking" Width="1.5" PointX="15.5" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.User" Width="1.5" PointX="8.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.UserOrganization" Width="1.5" PointX="10.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.ErrorLog" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.familyset" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.SurveyMetaDataTransform" Width="1.5" PointX="10.25" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.vwCanvasShare" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.vwCanvasUser" Width="1.5" PointX="12.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.vwOrgsForUser" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EIWSModel.vwUserOrganizationUser" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="true" />
+        <AssociationConnector Association="EIWSModel.FK_Address_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.FK_Admin_Organization" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.FK_Canvas__Datasource" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.FK_Canvas_CreatorUser" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.FK_Datasource_Organization" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.FK_Datasource_SurveyMetaData" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.FK_SurveyResponse_lk_RecordSource" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.FK_SurveyResponse_lk_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.FK_SurveyMetaData_lk_SurveyType" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.FK_SurveyMetaData_Organization" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.FK_UserOrganization_Organization" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.FK_ResponseGridcolumns_SurveyMetaData" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.FK_UserOrganization_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.FK_CanvasUser_User" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.FK_SurveyMetaDataTransform_SurveyMetaData" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.FK_SurveyResponse_SurveyMetaData" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.FK_SurveyResponse_SurveyResponse" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.FK_SurveyResponseTracking_SurveyResponse" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.FK_UserOrganization_User" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.DatasourceUser" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.SurveyMetadataOrganization" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.SurveyMetaDataUser" ManuallyRouted="false" />
+        <AssociationConnector Association="EIWSModel.SurveyResponseUser" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

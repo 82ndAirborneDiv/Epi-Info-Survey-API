@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EIWSModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="SurveyAPIEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+    <EntitySet Name="lk_Status" EntityType="EIWSModel.lk_Status" />
+    <EntitySet Name="lk_SurveyType" EntityType="EIWSModel.lk_SurveyType" />
+    <EntitySet Name="SurveyMetaDatas" EntityType="EIWSModel.SurveyMetaData" />
+    <AssociationSet Name="FK_SurveyMetaData_lk_SurveyType" Association="EIWSModel.FK_SurveyMetaData_lk_SurveyType">
+      <End Role="lk_SurveyType" EntitySet="lk_SurveyType" />
+      <End Role="SurveyMetaData" EntitySet="SurveyMetaDatas" />
+    </AssociationSet>
+    <EntitySet Name="SurveyResponses" EntityType="EIWSModel.SurveyResponse" />
+    <AssociationSet Name="FK_SurveyResponse_lk_Status" Association="EIWSModel.FK_SurveyResponse_lk_Status">
+      <End Role="lk_Status" EntitySet="lk_Status" />
+      <End Role="SurveyResponse" EntitySet="SurveyResponses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyResponse_SurveyMetaData" Association="EIWSModel.FK_SurveyResponse_SurveyMetaData">
+      <End Role="SurveyMetaData" EntitySet="SurveyMetaDatas" />
+      <End Role="SurveyResponse" EntitySet="SurveyResponses" />
+    </AssociationSet>
+    <EntitySet Name="Organizations" EntityType="EIWSModel.Organization" />
+    <AssociationSet Name="FK_SurveyMetaData_Organization" Association="EIWSModel.FK_SurveyMetaData_Organization">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="SurveyMetaData" EntitySet="SurveyMetaDatas" />
+    </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="EIWSModel.sysdiagram" />
+    <EntitySet Name="Addresses" EntityType="EIWSModel.Address" />
+    <EntitySet Name="States" EntityType="EIWSModel.State" />
+    <EntitySet Name="Admins" EntityType="EIWSModel.Admin" />
+    <AssociationSet Name="FK_Address_Admin" Association="EIWSModel.FK_Address_Admin">
+      <End Role="Admin" EntitySet="Admins" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Admin_Organization" Association="EIWSModel.FK_Admin_Organization">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="Admin" EntitySet="Admins" />
+    </AssociationSet>
+    <EntitySet Name="EIDatasources" EntityType="EIWSModel.EIDatasource" />
+    <EntitySet Name="lk_RecordSource" EntityType="EIWSModel.lk_RecordSource" />
+    <EntitySet Name="SurveyMetaDataViews" EntityType="EIWSModel.SurveyMetaDataView" />
+    <EntitySet Name="ErrorLogs" EntityType="EIWSModel.ErrorLog" />
+    <EntitySet Name="SurveyMetaDataTransforms" EntityType="EIWSModel.SurveyMetaDataTransform" />
+    <AssociationSet Name="FK_Datasource_SurveyMetaData" Association="EIWSModel.FK_Datasource_SurveyMetaData">
+      <End Role="SurveyMetaData" EntitySet="SurveyMetaDatas" />
+      <End Role="EIDatasource" EntitySet="EIDatasources" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyResponse_lk_RecordSource" Association="EIWSModel.FK_SurveyResponse_lk_RecordSource">
+      <End Role="lk_RecordSource" EntitySet="lk_RecordSource" />
+      <End Role="SurveyResponse" EntitySet="SurveyResponses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyMetaDataTransform_SurveyMetaData" Association="EIWSModel.FK_SurveyMetaDataTransform_SurveyMetaData">
+      <End Role="SurveyMetaData" EntitySet="SurveyMetaDatas" />
+      <End Role="SurveyMetaDataTransform" EntitySet="SurveyMetaDataTransforms" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="lk_Status">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Type="Int32" Name="StatusId" Nullable="false" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SurveyResponses" Relationship="EIWSModel.FK_SurveyResponse_lk_Status" FromRole="lk_Status" ToRole="SurveyResponse" />
+  </EntityType>
+  <EntityType Name="lk_SurveyType">
+    <Key>
+      <PropertyRef Name="SurveyTypeId" />
+    </Key>
+    <Property Type="Int32" Name="SurveyTypeId" Nullable="false" />
+    <Property Type="String" Name="SurveyType" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SurveyMetaDatas" Relationship="EIWSModel.FK_SurveyMetaData_lk_SurveyType" FromRole="lk_SurveyType" ToRole="SurveyMetaData" />
+  </EntityType>
+  <EntityType Name="SurveyMetaData">
+    <Key>
+      <PropertyRef Name="SurveyId" />
+    </Key>
+    <Property Type="Guid" Name="SurveyId" Nullable="false" />
+    <Property Type="String" Name="SurveyNumber" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="SurveyTypeId" Nullable="false" />
+    <Property Type="DateTime" Name="ClosingDate" Nullable="false" Precision="7" />
+    <Property Type="String" Name="SurveyName" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="OrganizationName" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DepartmentName" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="IntroductionText" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="TemplateXML" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ExitText" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="UserPublishKey" Nullable="false" />
+    <Property Type="Int64" Name="TemplateXMLSize" Nullable="false" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+    <Property Type="Int32" Name="OrganizationId" Nullable="false" />
+    <NavigationProperty Name="lk_SurveyType" Relationship="EIWSModel.FK_SurveyMetaData_lk_SurveyType" FromRole="SurveyMetaData" ToRole="lk_SurveyType" />
+    <NavigationProperty Name="SurveyResponses" Relationship="EIWSModel.FK_SurveyResponse_SurveyMetaData" FromRole="SurveyMetaData" ToRole="SurveyResponse" />
+    <NavigationProperty Name="Organization" Relationship="EIWSModel.FK_SurveyMetaData_Organization" FromRole="SurveyMetaData" ToRole="Organization" />
+    <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="7" />
+    <Property Type="Boolean" Name="IsDraftMode" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdate" Precision="7" />
+    <Property Name="IsSQLProject" Type="Boolean" />
+    <NavigationProperty Name="EIDatasources" Relationship="EIWSModel.FK_Datasource_SurveyMetaData" FromRole="SurveyMetaData" ToRole="EIDatasource" />
+    <NavigationProperty Name="SurveyMetaDataTransforms" Relationship="EIWSModel.FK_SurveyMetaDataTransform_SurveyMetaData" FromRole="SurveyMetaData" ToRole="SurveyMetaDataTransform" />
+  </EntityType>
+  <Association Name="FK_SurveyMetaData_lk_SurveyType">
+    <End Type="EIWSModel.lk_SurveyType" Role="lk_SurveyType" Multiplicity="1" />
+    <End Type="EIWSModel.SurveyMetaData" Role="SurveyMetaData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lk_SurveyType">
+        <PropertyRef Name="SurveyTypeId" />
+      </Principal>
+      <Dependent Role="SurveyMetaData">
+        <PropertyRef Name="SurveyTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SurveyResponse">
+    <Key>
+      <PropertyRef Name="ResponseId" />
+    </Key>
+    <Property Type="Guid" Name="ResponseId" Nullable="false" />
+    <Property Type="Guid" Name="SurveyId" Nullable="false" />
+    <Property Type="DateTime" Name="DateUpdated" Nullable="false" Precision="7" />
+    <Property Type="DateTime" Name="DateCompleted" Precision="7" />
+    <Property Type="Int32" Name="StatusId" Nullable="false" />
+    <Property Type="String" Name="ResponseXML" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ResponsePasscode" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="ResponseXMLSize" />
+    <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="7" />
+    <NavigationProperty Name="lk_Status" Relationship="EIWSModel.FK_SurveyResponse_lk_Status" FromRole="SurveyResponse" ToRole="lk_Status" />
+    <NavigationProperty Name="SurveyMetaData" Relationship="EIWSModel.FK_SurveyResponse_SurveyMetaData" FromRole="SurveyResponse" ToRole="SurveyMetaData" />
+    <Property Type="Boolean" Name="IsDraftMode" Nullable="false" />
+    <Property Name="RecordSourceId" Type="Int32" />
+    <NavigationProperty Name="lk_RecordSource" Relationship="EIWSModel.FK_SurveyResponse_lk_RecordSource" FromRole="SurveyResponse" ToRole="lk_RecordSource" />
+  </EntityType>
+  <Association Name="FK_SurveyResponse_lk_Status">
+    <End Type="EIWSModel.lk_Status" Role="lk_Status" Multiplicity="1" />
+    <End Type="EIWSModel.SurveyResponse" Role="SurveyResponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lk_Status">
+        <PropertyRef Name="StatusId" />
+      </Principal>
+      <Dependent Role="SurveyResponse">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyResponse_SurveyMetaData">
+    <End Type="EIWSModel.SurveyMetaData" Role="SurveyMetaData" Multiplicity="1" />
+    <End Type="EIWSModel.SurveyResponse" Role="SurveyResponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyMetaData">
+        <PropertyRef Name="SurveyId" />
+      </Principal>
+      <Dependent Role="SurveyResponse">
+        <PropertyRef Name="SurveyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Organization">
+    <Key>
+      <PropertyRef Name="OrganizationId" />
+    </Key>
+    <Property Type="Int32" Name="OrganizationId" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="String" Name="OrganizationKey" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Organization1" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsEnabled" Nullable="false" />
+    <NavigationProperty Name="SurveyMetaDatas" Relationship="EIWSModel.FK_SurveyMetaData_Organization" FromRole="Organization" ToRole="SurveyMetaData" />
+    <Property Type="Boolean" Name="IsHostOrganization" Nullable="false" />
+    <NavigationProperty Name="Admins" Relationship="EIWSModel.FK_Admin_Organization" FromRole="Organization" ToRole="Admin" />
+  </EntityType>
+  <Association Name="FK_SurveyMetaData_Organization">
+    <End Type="EIWSModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="EIWSModel.SurveyMetaData" Role="SurveyMetaData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="SurveyMetaData">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="principal_id" Nullable="false" />
+    <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="Int32" Name="version" />
+    <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressId" />
+    </Key>
+    <Property Type="Int32" Name="AddressId" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="String" Name="AddressLine1" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AddressLine2" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="City" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="StateProvinceId" Nullable="false" />
+    <Property Type="String" Name="PostalCode" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="AdminId" />
+    <NavigationProperty Name="Admin" Relationship="EIWSModel.FK_Address_Admin" FromRole="Address" ToRole="Admin" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateProvinceId" />
+    </Key>
+    <Property Type="Int32" Name="StateProvinceId" Nullable="false" />
+    <Property Type="String" Name="StateCode" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="StateName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="AdminId" />
+    </Key>
+    <Property Type="Guid" Name="AdminId" Nullable="false" />
+    <Property Type="String" Name="AdminEmail" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="OrganizationId" Nullable="false" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="Boolean" Name="Notify" Nullable="false" />
+    <Property Type="String" Name="LastName" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FirstName" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PhoneNumber" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Addresses" Relationship="EIWSModel.FK_Address_Admin" FromRole="Admin" ToRole="Address" />
+    <NavigationProperty Name="Organization" Relationship="EIWSModel.FK_Admin_Organization" FromRole="Admin" ToRole="Organization" />
+  </EntityType>
+  <Association Name="FK_Address_Admin">
+    <End Type="EIWSModel.Admin" Role="Admin" Multiplicity="0..1" />
+    <End Type="EIWSModel.Address" Role="Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="AdminId" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="AdminId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Admin_Organization">
+    <End Type="EIWSModel.Organization" Role="Organization" Multiplicity="1" />
+    <End Type="EIWSModel.Admin" Role="Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="OrganizationId" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="EIDatasource">
+    <Key>
+      <PropertyRef Name="DatasourceID" />
+    </Key>
+    <Property Name="DatasourceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Name="DatasourceServerName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="DatabaseType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InitialCatalog" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="PersistSecurityInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SurveyId" Type="Guid" />
+    <Property Name="DatabaseUserID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SurveyMetaData" Relationship="EIWSModel.FK_Datasource_SurveyMetaData" FromRole="EIDatasource" ToRole="SurveyMetaData" />
+  </EntityType>
+  <EntityType Name="lk_RecordSource">
+    <Key>
+      <PropertyRef Name="RecordSourceId" />
+    </Key>
+    <Property Name="RecordSourceId" Type="Int32" Nullable="false" />
+    <Property Name="RecordSource" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RecordSourceDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SurveyResponses" Relationship="EIWSModel.FK_SurveyResponse_lk_RecordSource" FromRole="lk_RecordSource" ToRole="SurveyResponse" />
+  </EntityType>
+  <EntityType Name="SurveyMetaDataView">
+    <Key>
+      <PropertyRef Name="SurveyId" />
+    </Key>
+    <Property Name="SurveyId" Type="Guid" Nullable="false" />
+    <Property Name="ViewTableName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ErrorLog">
+    <Key>
+      <PropertyRef Name="ErrorDate" />
+    </Key>
+    <Property Name="ErrorDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SurveyId" Type="Guid" />
+    <Property Name="ResponseId" Type="Guid" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ERROR_NUMBER" Type="Int32" />
+    <Property Name="ERROR_MESSAGE" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="ERROR_SEVERITY" Type="Int32" />
+    <Property Name="ERROR_STATE" Type="Int32" />
+    <Property Name="ERROR_PROCEDURE" Type="String" MaxLength="1128" FixedLength="false" Unicode="true" />
+    <Property Name="ERROR_LINE" Type="Int32" />
+    <Property Name="ErrorText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ErrorText2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SurveyMetaDataTransform">
+    <Key>
+      <PropertyRef Name="SurveyId" />
+      <PropertyRef Name="TableName" />
+      <PropertyRef Name="FieldName" />
+      <PropertyRef Name="FieldTypeId" />
+    </Key>
+    <Property Name="SurveyId" Type="Guid" Nullable="false" />
+    <Property Name="TableName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="BaseTableName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PageId" Type="Int32" />
+    <Property Name="FieldName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="FieldTypeId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SurveyMetaData" Relationship="EIWSModel.FK_SurveyMetaDataTransform_SurveyMetaData" FromRole="SurveyMetaDataTransform" ToRole="SurveyMetaData" />
+  </EntityType>
+  <Association Name="FK_Datasource_SurveyMetaData">
+    <End Type="EIWSModel.SurveyMetaData" Role="SurveyMetaData" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="EIWSModel.EIDatasource" Role="EIDatasource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyMetaData">
+        <PropertyRef Name="SurveyId" />
+      </Principal>
+      <Dependent Role="EIDatasource">
+        <PropertyRef Name="SurveyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyResponse_lk_RecordSource">
+    <End Type="EIWSModel.lk_RecordSource" Role="lk_RecordSource" Multiplicity="0..1" />
+    <End Type="EIWSModel.SurveyResponse" Role="SurveyResponse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lk_RecordSource">
+        <PropertyRef Name="RecordSourceId" />
+      </Principal>
+      <Dependent Role="SurveyResponse">
+        <PropertyRef Name="RecordSourceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyMetaDataTransform_SurveyMetaData">
+    <End Type="EIWSModel.SurveyMetaData" Role="SurveyMetaData" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="EIWSModel.SurveyMetaDataTransform" Role="SurveyMetaDataTransform" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyMetaData">
+        <PropertyRef Name="SurveyId" />
+      </Principal>
+      <Dependent Role="SurveyMetaDataTransform">
+        <PropertyRef Name="SurveyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

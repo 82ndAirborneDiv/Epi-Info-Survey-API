@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epi.Web.SurveyAPI", "Epi.Web.SurveyAPI\Epi.Web.SurveyAPI.csproj", "{F5859BFD-48F5-4A25-9674-E953E74659C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{B6431658-E6F8-44D6-B8A9-3CF9B88DB059}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5859BFD-48F5-4A25-9674-E953E74659C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5859BFD-48F5-4A25-9674-E953E74659C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5859BFD-48F5-4A25-9674-E953E74659C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5859BFD-48F5-4A25-9674-E953E74659C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6431658-E6F8-44D6-B8A9-3CF9B88DB059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6431658-E6F8-44D6-B8A9-3CF9B88DB059}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6431658-E6F8-44D6-B8A9-3CF9B88DB059}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6431658-E6F8-44D6-B8A9-3CF9B88DB059}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EIWSModelStoreContainer" CdmEntityContainer="SurveyAPIEntities">
+    <EntitySetMapping Name="lk_Status">
+      <EntityTypeMapping TypeName="EIWSModel.lk_Status">
+        <MappingFragment StoreEntitySet="lk_Status">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lk_SurveyType">
+      <EntityTypeMapping TypeName="EIWSModel.lk_SurveyType">
+        <MappingFragment StoreEntitySet="lk_SurveyType">
+          <ScalarProperty Name="SurveyType" ColumnName="SurveyType" />
+          <ScalarProperty Name="SurveyTypeId" ColumnName="SurveyTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyMetaDatas">
+      <EntityTypeMapping TypeName="EIWSModel.SurveyMetaData">
+        <MappingFragment StoreEntitySet="SurveyMetaData">
+          <ScalarProperty Name="IsSQLProject" ColumnName="IsSQLProject" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsDraftMode" ColumnName="IsDraftMode" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="TemplateXMLSize" ColumnName="TemplateXMLSize" />
+          <ScalarProperty Name="UserPublishKey" ColumnName="UserPublishKey" />
+          <ScalarProperty Name="ExitText" ColumnName="ExitText" />
+          <ScalarProperty Name="TemplateXML" ColumnName="TemplateXML" />
+          <ScalarProperty Name="IntroductionText" ColumnName="IntroductionText" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+          <ScalarProperty Name="SurveyName" ColumnName="SurveyName" />
+          <ScalarProperty Name="ClosingDate" ColumnName="ClosingDate" />
+          <ScalarProperty Name="SurveyTypeId" ColumnName="SurveyTypeId" />
+          <ScalarProperty Name="SurveyNumber" ColumnName="SurveyNumber" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyResponses">
+      <EntityTypeMapping TypeName="EIWSModel.SurveyResponse">
+        <MappingFragment StoreEntitySet="SurveyResponse">
+          <ScalarProperty Name="RecordSourceId" ColumnName="RecordSourceId" />
+          <ScalarProperty Name="IsDraftMode" ColumnName="IsDraftMode" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="ResponseXMLSize" ColumnName="ResponseXMLSize" />
+          <ScalarProperty Name="ResponsePasscode" ColumnName="ResponsePasscode" />
+          <ScalarProperty Name="ResponseXML" ColumnName="ResponseXML" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="DateCompleted" ColumnName="DateCompleted" />
+          <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="ResponseId" ColumnName="ResponseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Organizations">
+      <EntityTypeMapping TypeName="EIWSModel.Organization">
+        <MappingFragment StoreEntitySet="Organization">
+          <ScalarProperty Name="IsHostOrganization" ColumnName="IsHostOrganization" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="Organization1" ColumnName="Organization" />
+          <ScalarProperty Name="OrganizationKey" ColumnName="OrganizationKey" />
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="EIWSModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="EIWSModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="StateProvinceId" ColumnName="StateProvinceId" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="EIWSModel.State">
+        <MappingFragment StoreEntitySet="States">
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+          <ScalarProperty Name="StateProvinceId" ColumnName="StateProvinceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="EIWSModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Notify" ColumnName="Notify" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+          <ScalarProperty Name="AdminEmail" ColumnName="AdminEmail" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EIDatasources">
+      <EntityTypeMapping TypeName="EIWSModel.EIDatasource">
+        <MappingFragment StoreEntitySet="EIDatasource">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DatabaseUserID" ColumnName="DatabaseUserID" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="PersistSecurityInfo" ColumnName="PersistSecurityInfo" />
+          <ScalarProperty Name="InitialCatalog" ColumnName="InitialCatalog" />
+          <ScalarProperty Name="DatabaseType" ColumnName="DatabaseType" />
+          <ScalarProperty Name="DatasourceServerName" ColumnName="DatasourceServerName" />
+          <ScalarProperty Name="DatasourceID" ColumnName="DatasourceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lk_RecordSource">
+      <EntityTypeMapping TypeName="EIWSModel.lk_RecordSource">
+        <MappingFragment StoreEntitySet="lk_RecordSource">
+          <ScalarProperty Name="RecordSourceDescription" ColumnName="RecordSourceDescription" />
+          <ScalarProperty Name="RecordSource" ColumnName="RecordSource" />
+          <ScalarProperty Name="RecordSourceId" ColumnName="RecordSourceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyMetaDataViews">
+      <EntityTypeMapping TypeName="EIWSModel.SurveyMetaDataView">
+        <MappingFragment StoreEntitySet="SurveyMetaDataView">
+          <ScalarProperty Name="ViewTableName" ColumnName="ViewTableName" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ErrorLogs">
+      <EntityTypeMapping TypeName="EIWSModel.ErrorLog">
+        <MappingFragment StoreEntitySet="ErrorLog">
+          <ScalarProperty Name="ErrorText2" ColumnName="ErrorText2" />
+          <ScalarProperty Name="ErrorText" ColumnName="ErrorText" />
+          <ScalarProperty Name="ERROR_LINE" ColumnName="ERROR_LINE" />
+          <ScalarProperty Name="ERROR_PROCEDURE" ColumnName="ERROR_PROCEDURE" />
+          <ScalarProperty Name="ERROR_STATE" ColumnName="ERROR_STATE" />
+          <ScalarProperty Name="ERROR_SEVERITY" ColumnName="ERROR_SEVERITY" />
+          <ScalarProperty Name="ERROR_MESSAGE" ColumnName="ERROR_MESSAGE" />
+          <ScalarProperty Name="ERROR_NUMBER" ColumnName="ERROR_NUMBER" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="ResponseId" ColumnName="ResponseId" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="ErrorDate" ColumnName="ErrorDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyMetaDataTransforms">
+      <EntityTypeMapping TypeName="EIWSModel.SurveyMetaDataTransform">
+        <MappingFragment StoreEntitySet="SurveyMetaDataTransform">
+          <ScalarProperty Name="FieldTypeId" ColumnName="FieldTypeId" />
+          <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+          <ScalarProperty Name="PageId" ColumnName="PageId" />
+          <ScalarProperty Name="BaseTableName" ColumnName="BaseTableName" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EpiWebModelStoreContainer" CdmEntityContainer="SurveyAPIEntities">
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="Epi.Web.Model.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="StateProvinceId" ColumnName="StateProvinceId" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="Epi.Web.Model.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="AdminEmail" ColumnName="AdminEmail" />
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Notify" ColumnName="Notify" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Canvas">
+      <EntityTypeMapping TypeName="Epi.Web.Model.Canva">
+        <MappingFragment StoreEntitySet="Canvas">
+          <ScalarProperty Name="CanvasID" ColumnName="CanvasID" />
+          <ScalarProperty Name="CanvasGUID" ColumnName="CanvasGUID" />
+          <ScalarProperty Name="CanvasName" ColumnName="CanvasName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CanvasDescription" ColumnName="CanvasDescription" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="DatasourceID" ColumnName="DatasourceID" />
+          <ScalarProperty Name="CanvasContent" ColumnName="CanvasContent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DataAccessRules">
+      <EntityTypeMapping TypeName="Epi.Web.Model.DataAccessRule">
+        <MappingFragment StoreEntitySet="DataAccessRules">
+          <ScalarProperty Name="RuleId" ColumnName="RuleId" />
+          <ScalarProperty Name="RuleName" ColumnName="RuleName" />
+          <ScalarProperty Name="RuleDescription" ColumnName="RuleDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Datasources">
+      <EntityTypeMapping TypeName="Epi.Web.Model.Datasource">
+        <MappingFragment StoreEntitySet="Datasource">
+          <ScalarProperty Name="DatasourceID" ColumnName="DatasourceID" />
+          <ScalarProperty Name="DatasourceName" ColumnName="DatasourceName" />
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="DatasourceServerName" ColumnName="DatasourceServerName" />
+          <ScalarProperty Name="DatabaseType" ColumnName="DatabaseType" />
+          <ScalarProperty Name="InitialCatalog" ColumnName="InitialCatalog" />
+          <ScalarProperty Name="PersistSecurityInfo" ColumnName="PersistSecurityInfo" />
+          <ScalarProperty Name="EIWSDatasource" ColumnName="EIWSDatasource" />
+          <ScalarProperty Name="EIWSSurveyId" ColumnName="EIWSSurveyId" />
+          <ScalarProperty Name="DatabaseUserID" ColumnName="DatabaseUserID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DatabaseObject" ColumnName="DatabaseObject" />
+          <ScalarProperty Name="SQLQuery" ColumnName="SQLQuery" />
+          <ScalarProperty Name="SQLText" ColumnName="SQLText" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="portnumber" ColumnName="portnumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EIDatasources">
+      <EntityTypeMapping TypeName="Epi.Web.Model.EIDatasource">
+        <MappingFragment StoreEntitySet="EIDatasource">
+          <ScalarProperty Name="DatasourceID" ColumnName="DatasourceID" />
+          <ScalarProperty Name="DatasourceServerName" ColumnName="DatasourceServerName" />
+          <ScalarProperty Name="DatabaseType" ColumnName="DatabaseType" />
+          <ScalarProperty Name="InitialCatalog" ColumnName="InitialCatalog" />
+          <ScalarProperty Name="PersistSecurityInfo" ColumnName="PersistSecurityInfo" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="DatabaseUserID" ColumnName="DatabaseUserID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lk_RecordSource">
+      <EntityTypeMapping TypeName="Epi.Web.Model.lk_RecordSource">
+        <MappingFragment StoreEntitySet="lk_RecordSource">
+          <ScalarProperty Name="RecordSourceId" ColumnName="RecordSourceId" />
+          <ScalarProperty Name="RecordSource" ColumnName="RecordSource" />
+          <ScalarProperty Name="RecordSourceDescription" ColumnName="RecordSourceDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lk_Status">
+      <EntityTypeMapping TypeName="Epi.Web.Model.lk_Status">
+        <MappingFragment StoreEntitySet="lk_Status">
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lk_SurveyType">
+      <EntityTypeMapping TypeName="Epi.Web.Model.lk_SurveyType">
+        <MappingFragment StoreEntitySet="lk_SurveyType">
+          <ScalarProperty Name="SurveyTypeId" ColumnName="SurveyTypeId" />
+          <ScalarProperty Name="SurveyType" ColumnName="SurveyType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Organizations">
+      <EntityTypeMapping TypeName="Epi.Web.Model.Organization">
+        <MappingFragment StoreEntitySet="Organization">
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+          <ScalarProperty Name="OrganizationKey" ColumnName="OrganizationKey" />
+          <ScalarProperty Name="Organization1" ColumnName="Organization" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="IsHostOrganization" ColumnName="IsHostOrganization" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResponseDisplaySettings">
+      <EntityTypeMapping TypeName="Epi.Web.Model.ResponseDisplaySetting">
+        <MappingFragment StoreEntitySet="ResponseDisplaySettings">
+          <ScalarProperty Name="FormId" ColumnName="FormId" />
+          <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResponseXmls">
+      <EntityTypeMapping TypeName="Epi.Web.Model.ResponseXml">
+        <MappingFragment StoreEntitySet="ResponseXml">
+          <ScalarProperty Name="ResponseId" ColumnName="ResponseId" />
+          <ScalarProperty Name="Xml" ColumnName="Xml" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="IsNewRecord" ColumnName="IsNewRecord" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="Epi.Web.Model.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleValue" ColumnName="RoleValue" />
+          <ScalarProperty Name="RoleDescription" ColumnName="RoleDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SharedCanvases">
+      <EntityTypeMapping TypeName="Epi.Web.Model.SharedCanvas">
+        <MappingFragment StoreEntitySet="SharedCanvases">
+          <ScalarProperty Name="CanvasID" ColumnName="CanvasID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SourceTables">
+      <EntityTypeMapping TypeName="Epi.Web.Model.SourceTable">
+        <MappingFragment StoreEntitySet="SourceTables">
+          <ScalarProperty Name="SourceTableName" ColumnName="SourceTableName" />
+          <ScalarProperty Name="FormId" ColumnName="FormId" />
+          <ScalarProperty Name="SourceTableXml" ColumnName="SourceTableXml" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="Epi.Web.Model.State">
+        <MappingFragment StoreEntitySet="States">
+          <ScalarProperty Name="StateProvinceId" ColumnName="StateProvinceId" />
+          <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyMetaDatas">
+      <EntityTypeMapping TypeName="Epi.Web.Model.SurveyMetaData">
+        <MappingFragment StoreEntitySet="SurveyMetaData">
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+          <ScalarProperty Name="SurveyNumber" ColumnName="SurveyNumber" />
+          <ScalarProperty Name="SurveyTypeId" ColumnName="SurveyTypeId" />
+          <ScalarProperty Name="ClosingDate" ColumnName="ClosingDate" />
+          <ScalarProperty Name="SurveyName" ColumnName="SurveyName" />
+          <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="IntroductionText" ColumnName="IntroductionText" />
+          <ScalarProperty Name="TemplateXML" ColumnName="TemplateXML" />
+          <ScalarProperty Name="ExitText" ColumnName="ExitText" />
+          <ScalarProperty Name="UserPublishKey" ColumnName="UserPublishKey" />
+          <ScalarProperty Name="TemplateXMLSize" ColumnName="TemplateXMLSize" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+          <ScalarProperty Name="IsDraftMode" ColumnName="IsDraftMode" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="ViewId" ColumnName="ViewId" />
+          <ScalarProperty Name="IsSQLProject" ColumnName="IsSQLProject" />
+          <ScalarProperty Name="IsShareable" ColumnName="IsShareable" />
+          <ScalarProperty Name="ShowAllRecords" ColumnName="ShowAllRecords" />
+          <ScalarProperty Name="DataAccessRuleId" ColumnName="DataAccessRuleId" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyMetaDataViews">
+      <EntityTypeMapping TypeName="Epi.Web.Model.SurveyMetaDataView">
+        <MappingFragment StoreEntitySet="SurveyMetaDataView">
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="ViewTableName" ColumnName="ViewTableName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyResponses">
+      <EntityTypeMapping TypeName="Epi.Web.Model.SurveyResponse">
+        <MappingFragment StoreEntitySet="SurveyResponse">
+          <ScalarProperty Name="ResponseId" ColumnName="ResponseId" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+          <ScalarProperty Name="DateCompleted" ColumnName="DateCompleted" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="ResponseXML" ColumnName="ResponseXML" />
+          <ScalarProperty Name="ResponsePasscode" ColumnName="ResponsePasscode" />
+          <ScalarProperty Name="ResponseXMLSize" ColumnName="ResponseXMLSize" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="IsDraftMode" ColumnName="IsDraftMode" />
+          <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+          <ScalarProperty Name="ParentRecordId" ColumnName="ParentRecordId" />
+          <ScalarProperty Name="RelateParentId" ColumnName="RelateParentId" />
+          <ScalarProperty Name="RecordSourceId" ColumnName="RecordSourceId" />
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyResponseTrackings">
+      <EntityTypeMapping TypeName="Epi.Web.Model.SurveyResponseTracking">
+        <MappingFragment StoreEntitySet="SurveyResponseTracking">
+          <ScalarProperty Name="ResponseId" ColumnName="ResponseId" />
+          <ScalarProperty Name="IsSQLResponse" ColumnName="IsSQLResponse" />
+          <ScalarProperty Name="IsResponseinsertedToEpi7" ColumnName="IsResponseinsertedToEpi7" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Epi.Web.Model.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="ResetPassword" ColumnName="ResetPassword" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="UGuid" ColumnName="UGuid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserOrganizations">
+      <EntityTypeMapping TypeName="Epi.Web.Model.UserOrganization">
+        <MappingFragment StoreEntitySet="UserOrganization">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ErrorLogs">
+      <EntityTypeMapping TypeName="Epi.Web.Model.ErrorLog">
+        <MappingFragment StoreEntitySet="ErrorLog">
+          <ScalarProperty Name="ErrorDate" ColumnName="ErrorDate" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="ResponseId" ColumnName="ResponseId" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="ERROR_NUMBER" ColumnName="ERROR_NUMBER" />
+          <ScalarProperty Name="ERROR_MESSAGE" ColumnName="ERROR_MESSAGE" />
+          <ScalarProperty Name="ERROR_SEVERITY" ColumnName="ERROR_SEVERITY" />
+          <ScalarProperty Name="ERROR_STATE" ColumnName="ERROR_STATE" />
+          <ScalarProperty Name="ERROR_PROCEDURE" ColumnName="ERROR_PROCEDURE" />
+          <ScalarProperty Name="ERROR_LINE" ColumnName="ERROR_LINE" />
+          <ScalarProperty Name="ErrorText" ColumnName="ErrorText" />
+          <ScalarProperty Name="ErrorText2" ColumnName="ErrorText2" />
+          <ScalarProperty Name="XML" ColumnName="XML" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="familysets">
+      <EntityTypeMapping TypeName="Epi.Web.Model.familyset">
+        <MappingFragment StoreEntitySet="familyset">
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+          <ScalarProperty Name="SurveyNumber" ColumnName="SurveyNumber" />
+          <ScalarProperty Name="SurveyTypeId" ColumnName="SurveyTypeId" />
+          <ScalarProperty Name="ClosingDate" ColumnName="ClosingDate" />
+          <ScalarProperty Name="SurveyName" ColumnName="SurveyName" />
+          <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="IntroductionText" ColumnName="IntroductionText" />
+          <ScalarProperty Name="TemplateXML" ColumnName="TemplateXML" />
+          <ScalarProperty Name="ExitText" ColumnName="ExitText" />
+          <ScalarProperty Name="UserPublishKey" ColumnName="UserPublishKey" />
+          <ScalarProperty Name="TemplateXMLSize" ColumnName="TemplateXMLSize" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+          <ScalarProperty Name="IsDraftMode" ColumnName="IsDraftMode" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="ViewId" ColumnName="ViewId" />
+          <ScalarProperty Name="IsSQLProject" ColumnName="IsSQLProject" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyMetaDataTransforms">
+      <EntityTypeMapping TypeName="Epi.Web.Model.SurveyMetaDataTransform">
+        <MappingFragment StoreEntitySet="SurveyMetaDataTransform">
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="BaseTableName" ColumnName="BaseTableName" />
+          <ScalarProperty Name="PageId" ColumnName="PageId" />
+          <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+          <ScalarProperty Name="FieldTypeId" ColumnName="FieldTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwCanvasShares">
+      <EntityTypeMapping TypeName="Epi.Web.Model.vwCanvasShare">
+        <MappingFragment StoreEntitySet="vwCanvasShare">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="DatasourceName" ColumnName="DatasourceName" />
+          <ScalarProperty Name="CanvasID" ColumnName="CanvasID" />
+          <ScalarProperty Name="CanvasName" ColumnName="CanvasName" />
+          <ScalarProperty Name="CanvasDescription" ColumnName="CanvasDescription" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CanvasContent" ColumnName="CanvasContent" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DatasourceID" ColumnName="DatasourceID" />
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="CanvasGUID" ColumnName="CanvasGUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwCanvasUsers">
+      <EntityTypeMapping TypeName="Epi.Web.Model.vwCanvasUser">
+        <MappingFragment StoreEntitySet="vwCanvasUser">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="DatasourceName" ColumnName="DatasourceName" />
+          <ScalarProperty Name="CanvasID" ColumnName="CanvasID" />
+          <ScalarProperty Name="CanvasName" ColumnName="CanvasName" />
+          <ScalarProperty Name="CanvasDescription" ColumnName="CanvasDescription" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CanvasContent" ColumnName="CanvasContent" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DatasourceID" ColumnName="DatasourceID" />
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="CanvasGUID" ColumnName="CanvasGUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwOrgsForUsers">
+      <EntityTypeMapping TypeName="Epi.Web.Model.vwOrgsForUser">
+        <MappingFragment StoreEntitySet="vwOrgsForUser">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="Organization" ColumnName="Organization" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="IsOrgActive" ColumnName="IsOrgActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwUserOrganizationUsers">
+      <EntityTypeMapping TypeName="Epi.Web.Model.vwUserOrganizationUser">
+        <MappingFragment StoreEntitySet="vwUserOrganizationUser">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="ResetPassword" ColumnName="ResetPassword" />
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="RoleValue" ColumnName="RoleValue" />
+          <ScalarProperty Name="RoleDescription" ColumnName="RoleDescription" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="IsOrgActive" ColumnName="IsOrgActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="DatasourceUser" TypeName="Epi.Web.Model.DatasourceUser" StoreEntitySet="DatasourceUser">
+      <EndProperty Name="Datasource">
+        <ScalarProperty Name="DatasourceID" ColumnName="DatasourceID" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="UserID" ColumnName="UserID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SurveyMetadataOrganization" TypeName="Epi.Web.Model.SurveyMetadataOrganization" StoreEntitySet="SurveyMetadataOrganization">
+      <EndProperty Name="Organization">
+        <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+      </EndProperty>
+      <EndProperty Name="SurveyMetaData">
+        <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SurveyMetaDataUser" TypeName="Epi.Web.Model.SurveyMetaDataUser" StoreEntitySet="SurveyMetaDataUser">
+      <EndProperty Name="SurveyMetaData">
+        <ScalarProperty Name="SurveyId" ColumnName="FormId" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="UserID" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SurveyResponseUser" TypeName="Epi.Web.Model.SurveyResponseUser" StoreEntitySet="SurveyResponseUser">
+      <EndProperty Name="SurveyResponse">
+        <ScalarProperty Name="ResponseId" ColumnName="ResponseId" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="UserID" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

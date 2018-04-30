@@ -1,0 +1,17 @@
+C:\Users\ParitalaS\Source\WEBAPI\WebAPI Standalone\Epi.Web.SurveyAPI\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\ParitalaS\Source\WEBAPI\WebAPI Standalone\Epi.Web.SurveyAPI\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\ParitalaS\Source\WEBAPI\WebAPI Standalone\Epi.Web.SurveyAPI\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\ParitalaS\Source\WEBAPI\WebAPI Standalone\Epi.Web.SurveyAPI\ConsoleApplication1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ParitalaS\Source\WEBAPI\WebAPI Standalone\Epi.Web.SurveyAPI\ConsoleApplication1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ParitalaS\Source\WEBAPI\WebAPI Standalone\Epi.Web.SurveyAPI\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\Users\ParitalaS\Source\WEBAPI\WebAPI Standalone\Epi.Web.SurveyAPI\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\ParitalaS\Source\WEBAPI\WebAPI Standalone\Epi.Web.SurveyAPI\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\GitProjects\Epi-Info-Survey-API\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\GitProjects\Epi-Info-Survey-API\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\GitProjects\Epi-Info-Survey-API\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\GitProjects\Epi-Info-Survey-API\ConsoleApplication1\bin\Debug\Newtonsoft.Json.dll
+C:\GitProjects\Epi-Info-Survey-API\ConsoleApplication1\bin\Debug\Newtonsoft.Json.xml
+C:\GitProjects\Epi-Info-Survey-API\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\GitProjects\Epi-Info-Survey-API\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.CoreCompileInputs.cache
+C:\GitProjects\Epi-Info-Survey-API\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\GitProjects\Epi-Info-Survey-API\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
