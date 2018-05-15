@@ -24,6 +24,7 @@ namespace Epi.Web.SurveyAPI.Interfaces.DataInterfaces
         List<OrganizationBO> GetOrganizationInfo();
         List<OrganizationBO> GetOrganizationNames();
         OrganizationBO GetOrganizationInfoByKey(string key);
+        OrganizationBO GetOrganizationInfoById(int OrgId);
      //   /// <summary>
      //   /// Gets a specific Organization.
      //   /// </summary>
@@ -32,36 +33,36 @@ namespace Epi.Web.SurveyAPI.Interfaces.DataInterfaces
      //   List<OrganizationBO> GetOrganizationBySurveyId(List<string> SurveyIdList, Guid UserPublishKey);
 
 
-        
-     //   /// <summary>
-     //   /// Get Organizations based on criteria.
-     //   /// </summary>
-     //   /// <param name="OrganizationId">Unique Organization identifier.</param>
-     //   /// <returns>Organization.</returns>
-     //   List<OrganizationBO> GetOrganization(List<string> SurveyAnswerIdList, string pSurveyId, DateTime pDateCompleted, int pStatusId = -1 );
+
+        //   /// <summary>
+        //   /// Get Organizations based on criteria.
+        //   /// </summary>
+        //   /// <param name="OrganizationId">Unique Organization identifier.</param>
+        //   /// <returns>Organization.</returns>
+        //   List<OrganizationBO> GetOrganization(List<string> SurveyAnswerIdList, string pSurveyId, DateTime pDateCompleted, int pStatusId = -1 );
 
 
-     //   /// <summary>
-     //   /// Gets a sorted list of all Organizations.
-     //   /// </summary>
-     //   /// <param name="sortExpression">Sort order.</param>
-     //   /// <returns>Sorted list of Organizations.</returns>
-     //  // List<OrganizationBO> GetOrganizations(string sortExpression = "OrganizationId ASC");
-        
-     //   /// <summary>
-     //   /// Gets Organization given an order.
-     //   /// </summary>
-     //   /// <param name="orderId">Unique order identifier.</param>
-     //   /// <returns>Organization.</returns>
-     //  // OrganizationBO GetOrganizationByOrder(int orderId);
+        //   /// <summary>
+        //   /// Gets a sorted list of all Organizations.
+        //   /// </summary>
+        //   /// <param name="sortExpression">Sort order.</param>
+        //   /// <returns>Sorted list of Organizations.</returns>
+        //  // List<OrganizationBO> GetOrganizations(string sortExpression = "OrganizationId ASC");
 
-     //   /// <summary>
-     //   /// Gets Organizations with order statistics in given sort order.
-     //   /// </summary>
-     //   /// <param name="Organizations">Organization list.</param>
-     //   /// <param name="sortExpression">Sort order.</param>
-     //   /// <returns>Sorted list of Organizations with order statistics.</returns>
-     ////   List<OrganizationBO> GetOrganizationsWithOrderStatistics(string sortExpression);
+        //   /// <summary>
+        //   /// Gets Organization given an order.
+        //   /// </summary>
+        //   /// <param name="orderId">Unique order identifier.</param>
+        //   /// <returns>Organization.</returns>
+        //  // OrganizationBO GetOrganizationByOrder(int orderId);
+
+        //   /// <summary>
+        //   /// Gets Organizations with order statistics in given sort order.
+        //   /// </summary>
+        //   /// <param name="Organizations">Organization list.</param>
+        //   /// <param name="sortExpression">Sort order.</param>
+        //   /// <returns>Sorted list of Organizations with order statistics.</returns>
+        ////   List<OrganizationBO> GetOrganizationsWithOrderStatistics(string sortExpression);
 
         /// <summary>
         /// Inserts a new Organization. 

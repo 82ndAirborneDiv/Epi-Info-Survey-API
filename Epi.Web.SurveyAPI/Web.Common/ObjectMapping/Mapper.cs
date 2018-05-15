@@ -39,6 +39,7 @@ namespace Epi.Web.SurveyAPI.Web.Common.ObjectMapping
                  StartDate  = pDTO.StartDate,
                 DBConnectionString = pDTO.DBConnectionString,
                 IsSqlProject = pDTO.IsSqlProject,
+                OrganizationId=pDTO.OrganizationId,
             };
         }
 
@@ -102,7 +103,8 @@ namespace Epi.Web.SurveyAPI.Web.Common.ObjectMapping
                 IsDraftMode = pBO.IsDraftMode,
                 StartDate = pBO.StartDate,
 
-                UserPublishKey = pBO.UserPublishKey
+                UserPublishKey = pBO.UserPublishKey,
+                OrganizationId=pBO.OrganizationId
 
 
 

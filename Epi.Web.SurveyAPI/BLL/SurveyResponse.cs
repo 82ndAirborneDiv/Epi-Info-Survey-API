@@ -254,12 +254,17 @@ namespace Epi.Web.SurveyAPI.BLL
 
                 if (ErrorMessageList.Count() > 0)
                     {
-                    response = new PreFilledAnswerResponse();
-                    response.ErrorMessageList = ErrorMessageList;
-                    response.Status = ((Message)1).ToString();
-                    }
-                else
-                {
+                        response = new PreFilledAnswerResponse();
+                        response.ErrorMessageList = ErrorMessageList;
+                        response.ErrorMessageList.Add("SurveyId", SurveyId);
+                        if (responseid.Value != null)
+                        {
+                            response.ErrorMessageList.Add("ResponseId", responseid.Value);                        
+                        }
+                        response.Status = ((Message)1).ToString();
+                        InsertErrorLog(response.ErrorMessageList);
+                       
+                    }               
                     //Insert Survey Response                   
                     if (responseid.Value == null && updatedtime.Value==null)
                     {
@@ -296,9 +301,8 @@ namespace Epi.Web.SurveyAPI.BLL
                     string ResponseUrl = ConfigurationManager.AppSettings["ResponseURL"];
                     response = new  PreFilledAnswerResponse( Mapper.ToDataTransferObjects(UserAuthenticationRequestBO));
                     response.SurveyResponseUrl = ResponseUrl + UserAuthenticationRequestBO.ResponseId;
-                    response.Status = ((Message)2).ToString(); ;
-
-                    }
+                    response.Status = ((Message)2).ToString(); 
+                   
                 }
             else
                 {
@@ -306,8 +310,9 @@ namespace Epi.Web.SurveyAPI.BLL
                 response = new PreFilledAnswerResponse(DTOList);
                 ErrorMessageList.Add("Keys", "Organization key and/or User publish key are invalid.");
                 response.ErrorMessageList = ErrorMessageList;
-                response.Status = ((Message)1).ToString(); 
-                }
+                response.Status = ((Message)1).ToString();
+                InsertErrorLog(response.ErrorMessageList);
+            }
             return response;
             }
         private bool IsSurveyInfoValidByOrgKeyAndPublishKey(string SurveyId, string Orgkey, Guid publishKey)
@@ -396,6 +401,12 @@ namespace Epi.Web.SurveyAPI.BLL
 
 
             return result;
+        }
+
+
+        public void InsertErrorLog(Dictionary<string, string> pValue)
+        {            
+            this.SurveyResponseDao.InsertErrorLog(pValue);           
         }
     }
 }

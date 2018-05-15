@@ -28,6 +28,7 @@ namespace Epi.Web.SurveyAPI.Web.Common.BusinessObject
         private DateTime _StartDate;
         public string _DBConnectionString { get; set; }
         public bool _IsSqlProject { get; set; }
+        public int OrganizationId { get; set; }
         public string StatusText
         { 
             get { return _StatusText; }

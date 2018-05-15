@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using Epi.Web.SurveyAPI.Models;
 using Epi.Web.SurveyAPI.Web.Common.Message;
+using Epi.Web.SurveyAPI.Web.Common.BusinessObject;
 
 namespace Epi.Web.SurveyAPI.Repository
 {
@@ -27,6 +28,6 @@ namespace Epi.Web.SurveyAPI.Repository
         PreFilledAnswerResponse SetSurveyAnswer(SurveyAnswerModel item);
         void Remove(string id);
         PreFilledAnswerResponse Update(SurveyAnswerModel item, string ResponseId);
-        bool IsSurveyInfoValidByOrgKeyAndPublishKey(string SurveyId, string PublisherKey, string OrgKey);
+        SurveyInfoBO GetSurveyInfoById(string SurveyId);
     }
 }

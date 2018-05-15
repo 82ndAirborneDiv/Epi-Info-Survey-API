@@ -481,6 +481,14 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:Epi.Web.SurveyAPI.BLL.Organization.OrganizationNameExists(System.String,System.String,System.String)">
+            <summary>
+            Checks whether a particular organization name already exists in database
+            </summary>
+            <param name="key"></param>
+            <param name="organizationName"></param>
+            <returns></returns>
+        </member>
         <member name="M:Epi.Web.SurveyAPI.BLL.SurveyInfo.GetSurveyInfoById(System.Collections.Generic.List{System.String})">
             <summary>
             Gets SurveyInfo based on criteria
@@ -502,12 +510,12 @@
             <param name="request"></param>
             <returns>HTTPRespose code with succee/failure</returns>
         </member>
-        <member name="M:Epi.Web.SurveyAPI.Controllers.SurveyResponseController.Patch(System.Net.Http.HttpRequestMessage)">
+        <member name="M:Epi.Web.SurveyAPI.Controllers.SurveyResponseController.Put(System.Net.Http.HttpRequestMessage)">
             <summary>
-            Handle HTTPPATCH request coming in from the client after successful Authentication
+            Handle HTTPPUT request coming in from the client after successful Authentication
             </summary>
             <param name="request"></param>
-            <returns>HTTPRespose code with succee/failure</returns>
+            <returns>HTTPRespose code with succees/failure</returns>
         </member>
         <member name="M:Epi.Web.SurveyAPI.Controllers.SurveyResponseController.Delete(System.Net.Http.HttpRequestMessage)">
             <summary>
@@ -681,6 +689,14 @@
             Deletes a SurveyResponse
             </summary>
             <param name="SurveyResponse">SurveyResponse.</param>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.EntitySurveyResponseDao.InsertErrorLog(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Inserts a new ErrorLog. 
+            </summary>
+            <remarks>       
+            </remarks>  
+            <param name="pValue">ErrorText.</param>
         </member>
         <member name="T:Epi.Web.SurveyAPI.EF.SurveyAPIEntities">
             <summary>
@@ -1845,7 +1861,13 @@
             <returns>response </returns>
         </member>
         <!-- Badly formed XML comment ignored for member "M:Epi.Web.SurveyAPI.Repository.SurveyResponseRepository.Update(Epi.Web.SurveyAPI.Models.SurveyAnswerModel,System.String)" -->
-        <!-- Badly formed XML comment ignored for member "M:Epi.Web.SurveyAPI.Repository.SurveyResponseRepository.IsSurveyInfoValidByOrgKeyAndPublishKey(System.String,System.String,System.String)" -->
+        <member name="M:Epi.Web.SurveyAPI.Repository.SurveyResponseRepository.GetSurveyInfoById(System.String)">
+            <summary>
+            Validate Header information coming from the request
+            </summary>
+            <param name="SurveyId"></param>
+            <returns>response </returns>
+        </member>
         <member name="M:Epi.Web.SurveyAPI.Repository.SurveyResponseRepository.Remove(System.String)">
             <summary>
             Updates SurveyResponse 

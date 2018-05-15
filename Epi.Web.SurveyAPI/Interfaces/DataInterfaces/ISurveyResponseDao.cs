@@ -86,5 +86,6 @@ namespace Epi.Web.SurveyAPI.Interfaces.DataInterfaces
          void UpdatePassCode(UserAuthenticationRequestBO passcodeBO);
          UserAuthenticationResponseBO GetAuthenticationResponse(UserAuthenticationRequestBO passcodeBO);
          void UpdateRecordStatus(SurveyResponseBO SurveyResponseBO);
+         void InsertErrorLog(Dictionary<string, string> pValue);
     }
 }

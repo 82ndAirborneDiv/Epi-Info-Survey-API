@@ -80,12 +80,12 @@ namespace Epi.Web.SurveyAPI.Controllers
         }
 
         /// <summary>
-        /// Handle HTTPPATCH request coming in from the client after successful Authentication
+        /// Handle HTTPPUT request coming in from the client after successful Authentication
         /// </summary>
         /// <param name="request"></param>
-        /// <returns>HTTPRespose code with succee/failure</returns>
+        /// <returns>HTTPRespose code with succees/failure</returns>
 
-        public HttpResponseMessage Patch(HttpRequestMessage  request)
+        public HttpResponseMessage Put(HttpRequestMessage  request)
         {
             Dictionary<string, string> keyvalupair = new Dictionary<string, string>();
             var value = request.Content.ReadAsStringAsync().Result;
@@ -117,10 +117,20 @@ namespace Epi.Web.SurveyAPI.Controllers
                 var Result = _isurveyAnswerRepository.Update(surveyanswerModel, responseId);
                 if (Result.SurveyResponseID != null)
                 {
-                    var response = Request.CreateResponse<PreFilledAnswerResponse>(System.Net.HttpStatusCode.OK, Result);//201 Created Success with response body.
-                    string uri = Url.Link("DefaultApi", new { id = Result.SurveyResponseID });
-                    response.Headers.Location = new Uri(uri);
-                    return response;
+                    if (Result.Status == "Created")
+                    {
+                        var response = Request.CreateResponse<PreFilledAnswerResponse>(System.Net.HttpStatusCode.Created, Result);//201 Created Success with response body.
+                        string uri = Url.Link("DefaultApi", new { id = Result.SurveyResponseID });
+                        response.Headers.Location = new Uri(uri);
+                        return response;
+                    }
+                    else
+                    {
+                        var response = Request.CreateResponse<PreFilledAnswerResponse>(System.Net.HttpStatusCode.OK, Result);//200 OK Success with response body.
+                        string uri = Url.Link("DefaultApi", new { id = Result.SurveyResponseID });
+                        response.Headers.Location = new Uri(uri);
+                        return response;
+                    }
                 }
                 else
                 {
@@ -168,7 +178,15 @@ namespace Epi.Web.SurveyAPI.Controllers
             if (item.Value != null)
             {
                 responseId = item.Value;
-                _isurveyAnswerRepository.Remove(responseId);
+                try
+                {
+                    _isurveyAnswerRepository.Remove(responseId);
+                }
+                catch(Exception ex)
+                {
+                    var exresponse = Request.CreateResponse(HttpStatusCode.Forbidden, "Response does not exist");//The request has not succeeded. The information returned with the response is dependent on the method used in the request.
+                    return exresponse;
+                }
                 var response = Request.CreateResponse(HttpStatusCode.OK, "Response Deleted.");//The request has succeeded. The information returned with the response is dependent on the method used in the request.
                 return response;
             }

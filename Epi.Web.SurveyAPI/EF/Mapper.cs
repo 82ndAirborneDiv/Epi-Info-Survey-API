@@ -36,7 +36,7 @@ namespace Epi.Web.SurveyAPI.EF
                 result.DateCreated = entity.DateCreated;
                 result.IsDraftMode = entity.IsDraftMode;
                 result.StartDate = entity.StartDate;
-                
+            result.OrganizationId = entity.OrganizationId;
                 if (entity.UserPublishKey != null)
                 {
                     result.UserPublishKey = entity.UserPublishKey;
@@ -347,5 +347,6 @@ namespace Epi.Web.SurveyAPI.EF
             return List;
             
         }
+       
     }
 }

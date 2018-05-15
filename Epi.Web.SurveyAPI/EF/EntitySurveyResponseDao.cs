@@ -495,7 +495,51 @@ namespace Epi.Web.SurveyAPI.EF
             }
         
         }
-       
+
+
+        /// <summary>
+        /// Inserts a new ErrorLog. 
+        /// </summary>
+        /// <remarks>       
+        /// </remarks>  
+        /// <param name="pValue">ErrorText.</param>
+        public void InsertErrorLog(Dictionary<string, string> pValue)
+        {
+            try
+            {
+                using (var Context = DataObjectFactory.CreateContext())
+                {
+                    ErrorLog ErrorLogEntity = new ErrorLog();
+                    ErrorLogEntity.ErrorDate = DateTime.Now;
+                    ErrorLogEntity.Comment = "SurveyAPI Error";
+                    StringBuilder ErrText = new StringBuilder();
+                    foreach (KeyValuePair<string, string> kvp in  pValue)
+                    {
+                        if(kvp.Key=="SurveyId")
+                        {
+                            ErrorLogEntity.SurveyId =new Guid(kvp.Value.ToString());
+                        }
+                       else if (kvp.Key == "ResponseId")
+                        {
+                            ErrorLogEntity.ResponseId = new Guid(kvp.Value.ToString());
+                        }                      
+                        else
+                            ErrText.Append(" "+ kvp.Key + " " + kvp.Value+". ");
+                    }
+                    ErrorLogEntity.ErrorText = ErrText.ToString();
+                  
+                    Context.AddToErrorLogs(ErrorLogEntity);
+
+                    Context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+
+        }
+
     }
 
     

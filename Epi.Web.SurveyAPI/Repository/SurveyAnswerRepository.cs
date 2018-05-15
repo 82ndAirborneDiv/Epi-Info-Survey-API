@@ -128,7 +128,7 @@ namespace Epi.Web.SurveyAPI.Repository
             try
             {                                  
                     Interfaces.DataInterfaces.ISurveyResponseDao SurveyResponseDao = new EntitySurveyResponseDao();
-                BLL.SurveyResponse Implementation = new BLL.SurveyResponse(SurveyResponseDao);
+                    BLL.SurveyResponse Implementation = new BLL.SurveyResponse(SurveyResponseDao);
                     PreFilledAnswerRequest prefilledanswerRequest = new PreFilledAnswerRequest();
                     Dictionary<string, string> Values = new Dictionary<string, string>();
                     prefilledanswerRequest.AnswerInfo.UserPublishKey = request.PublisherKey;
@@ -147,8 +147,8 @@ namespace Epi.Web.SurveyAPI.Repository
             {
                 PassCodeDTO DTOList = new PassCodeDTO();
                  response = new PreFilledAnswerResponse(DTOList);
-
-                response.ErrorMessageList.Add("Failed", "Failed to insert Response");
+                if(response.ErrorMessageList != null)
+                    response.ErrorMessageList.Add("Failed", "Failed to insert Response");
                 response.Status = ((BLL.SurveyResponse.Message)1).ToString();
                 return response;
             }
@@ -185,12 +185,28 @@ namespace Epi.Web.SurveyAPI.Repository
                 prefilledanswerRequest.AnswerInfo.UserPublishKey = request.PublisherKey;
                 var updatedtime = FilteredAnswerList.Where(x => x.Key.ToLower() == "_updatestamp").FirstOrDefault();
                 var Responsekey = FilteredAnswerList.Where(x => x.Key.ToLower() == "responseid" || x.Key.ToLower() == "id").FirstOrDefault().Key;
-                FilteredAnswerList.Remove(Responsekey);
-                FilteredAnswerList.Remove(updatedtime.Key);
                 foreach (KeyValuePair<string, string> entry in FilteredAnswerList)
                 {
                     Values.Add(entry.Key, entry.Value);
                 }
+
+                try
+                {
+                    var survey = Implementation.GetSurveyResponseById(new List<string> { ResponseId }, request.PublisherKey);
+                }
+                catch (Exception ex)
+                {
+                    prefilledanswerRequest.AnswerInfo.SurveyQuestionAnswerList = Values;
+                    response = Implementation.SetSurveyAnswer(prefilledanswerRequest);
+                    response.Status = "Created";
+                    return response;
+                }
+
+
+                Values.Remove(Responsekey);
+                    if(updatedtime.Key!=null)
+                Values.Remove(updatedtime.Key);
+               
                 prefilledanswerRequest.AnswerInfo.SurveyQuestionAnswerList = Values;
 
                 Dictionary<string, string> ErrorMessageList = new Dictionary<string, string>();
@@ -202,38 +218,45 @@ namespace Epi.Web.SurveyAPI.Repository
                 {
                     response = new PreFilledAnswerResponse();
                     response.ErrorMessageList = ErrorMessageList;
+                    response.ErrorMessageList.Add("SurveyId", request.SurveyId.ToString());
+                    response.ErrorMessageList.Add("ResponseId", ResponseId);                   
                     response.Status = ((Message)1).ToString();
-                }
-                else
-                {
+                    Implementation.InsertErrorLog(response.ErrorMessageList);                
+                }               
                     SurveyResponseBO surveyresponseBO = new SurveyResponseBO(); SurveyResponseBO SurveyResponse = new SurveyResponseBO();
                     UserAuthenticationRequestBO UserAuthenticationRequestBO = new UserAuthenticationRequestBO();
                     surveyresponseBO.SurveyId = request.SurveyId.ToString();
                     surveyresponseBO.ResponseId = ResponseId.ToString();
                     surveyresponseBO.XML = Xml;
                     System.DateTime dateTime = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-                    surveyresponseBO.DateUpdated = dateTime.AddMilliseconds(Convert.ToDouble(updatedtime.Value.ToString())).ToLocalTime();
-                    surveyresponseBO.DateCompleted = dateTime.AddMilliseconds(Convert.ToDouble(updatedtime.Value.ToString())).ToLocalTime();
-
-                    surveyresponseBO.Status = 2;                   
+                    if (updatedtime.Key != null)
+                    {
+                        surveyresponseBO.DateUpdated = dateTime.AddMilliseconds(Convert.ToDouble(updatedtime.Value.ToString())).ToLocalTime();
+                        surveyresponseBO.DateCompleted = dateTime.AddMilliseconds(Convert.ToDouble(updatedtime.Value.ToString())).ToLocalTime();
+                    }
+                    else
+                    {
+                        surveyresponseBO.DateUpdated =DateTime.Now;
+                        surveyresponseBO.DateCompleted =DateTime.Now;
+                    }
+                    surveyresponseBO.Status = 2;                  
                     SurveyResponse = Implementation.UpdateSurveyResponse(surveyresponseBO);
                     UserAuthenticationRequestBO = Web.Common.ObjectMapping.Mapper.ToBusinessObject(ResponseId);
-                    Implementation.SavePassCode(UserAuthenticationRequestBO);
+                    Implementation.SavePassCode(UserAuthenticationRequestBO);                                                                   
 
                     //return Response
                     string ResponseUrl = ConfigurationManager.AppSettings["ResponseURL"];
                     response = new PreFilledAnswerResponse(Web.Common.ObjectMapping.Mapper.ToDataTransferObjects(UserAuthenticationRequestBO));
                     response.SurveyResponseUrl = ResponseUrl + UserAuthenticationRequestBO.ResponseId;
-                    response.Status = ((Message)2).ToString(); 
-                }
+                    response.Status = ((Message)2).ToString();                
                 return response;
             }
             catch (Exception ex)
             {
                 PassCodeDTO DTOList = new PassCodeDTO();
                 response = new PreFilledAnswerResponse(DTOList);
-
-                response.ErrorMessageList.Add("Failed", "Failed to insert Response");
+                if (response.ErrorMessageList != null)
+                    response.ErrorMessageList.Add("Failed", "Failed to insert Response");
                 response.Status = ((BLL.SurveyResponse.Message)1).ToString();
                 return response;
             }
@@ -242,14 +265,29 @@ namespace Epi.Web.SurveyAPI.Repository
         /// <summary>
         /// Validate Header information coming from the request
         /// </summary>
-        /// <param name="SurveyId",name="PublisherKey",name="OrgKey"></param>
+        /// <param name="SurveyId"></param>
         /// <returns>response </returns>
-        public bool IsSurveyInfoValidByOrgKeyAndPublishKey(string SurveyId,string PublisherKey,string OrgKey) 
-        {
+        public SurveyInfoBO GetSurveyInfoById(string SurveyId) 
+        {           
             Interfaces.DataInterfaces.ISurveyInfoDao surveyInfoDao = new EF.EntitySurveyInfoDao();
             BLL.SurveyInfo SurveyInfo = new BLL.SurveyInfo(surveyInfoDao);
-            bool IsValidOrgKeyAndPublishKey=SurveyInfo.IsSurveyInfoValidByOrgKeyAndPublishKey(SurveyId, OrgKey, new Guid(PublisherKey));            
-            return IsValidOrgKeyAndPublishKey;
+            try
+            {
+                var surveyInfo = SurveyInfo.GetSurveyInfoById(SurveyId);
+                if (surveyInfo != null)
+                {
+                    Interfaces.DataInterfaces.IOrganizationDao OrgDao = new EF.EntityOrganizationDao();
+                    BLL.Organization Organization = new BLL.Organization(OrgDao);
+                    var OrgBo = Organization.GetOrganizationById(surveyInfo.OrganizationId);
+                    surveyInfo.OrganizationKey = new Guid(OrgBo.OrganizationKey);
+                }
+                return surveyInfo;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+           
         }
 
         /// <summary>

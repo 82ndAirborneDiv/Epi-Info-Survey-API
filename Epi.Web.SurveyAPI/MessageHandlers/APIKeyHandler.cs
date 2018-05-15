@@ -30,23 +30,25 @@ namespace Epi.Web.SurveyAPI.MessageHandlers
         {
             bool isValidAPIRequest = false;
             IEnumerable<string> lsHeaders;
-            string Orgkey, Publisherkey, SurveyId;
+            string  SurveyId;
             //Validate that the api keys exists in Client request headers.
             var checkApiKeyExists = request.Headers.TryGetValues("SurveyId", out lsHeaders);
-            SurveyId = lsHeaders.FirstOrDefault();
-            checkApiKeyExists = request.Headers.TryGetValues("PublisherKey", out lsHeaders);
-            Publisherkey = lsHeaders.FirstOrDefault();
-            checkApiKeyExists = request.Headers.TryGetValues("OrgKey", out lsHeaders);
-            Orgkey = lsHeaders.FirstOrDefault();
-            if (!string.IsNullOrEmpty(SurveyId)&& !string.IsNullOrEmpty(Publisherkey) && !string.IsNullOrEmpty(Orgkey))
+            SurveyId = lsHeaders.FirstOrDefault();          
+            if (!string.IsNullOrEmpty(SurveyId))
             {
                 try
                 {
                     //using Service Locator pattern instead of Dependency injection in the DelegateHandler
                      var requestScopedService = request.GetDependencyScope().GetService(typeof(ISurveyResponseRepository)) as ISurveyResponseRepository;
                     //checking if the keys are valid GUIDS
-                   requestScopedService.SurveyId = new Guid(SurveyId); requestScopedService.PublisherKey = new Guid(Publisherkey); requestScopedService.OrgKey = new Guid(Orgkey);                  
-                    isValidAPIRequest = requestScopedService.IsSurveyInfoValidByOrgKeyAndPublishKey(SurveyId, Publisherkey, Orgkey);
+                   requestScopedService.SurveyId = new Guid(SurveyId); 
+                    var surveyInfo = requestScopedService.GetSurveyInfoById(SurveyId);
+                    if(surveyInfo!=null)
+                    {
+                        isValidAPIRequest = true;
+                        requestScopedService.PublisherKey = surveyInfo.UserPublishKey;
+                        requestScopedService.OrgKey = surveyInfo.OrganizationKey;
+                    }
                 }
                 catch(Exception ex)
                 {

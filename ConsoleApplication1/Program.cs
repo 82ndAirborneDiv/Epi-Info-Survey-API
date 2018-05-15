@@ -21,9 +21,7 @@ namespace ConsoleApplication1
         static string _strBaseaddress = "";
         static string _strjson = "";
         static string _strHttpRequest = "";
-        static string _strSurveyId = "";
-        static string _strOrgKey = "";
-        static string _strPublishToken = "";
+        static string _strSurveyId = "";      
         [STAThread]
         public static void Main(string[] args)
         {
@@ -52,15 +50,7 @@ namespace ConsoleApplication1
                     if (line.ToLower().Contains("surveyid"))
                     {
                         _strSurveyId = line.Substring(line.IndexOf("=") + 1).TrimStart('\\').TrimEnd('\\');
-                    }
-                    else if (line.ToLower().Contains("orgkey"))
-                    {
-                        _strOrgKey = line.Substring(line.IndexOf("=") + 1).TrimStart('\\').TrimEnd('\\');
-                    }
-                    else if (line.ToLower().Contains("publisherkey"))
-                    {
-                        _strPublishToken = line.Substring(line.IndexOf("=") + 1).TrimStart('\\').TrimEnd('\\');
-                    }
+                    }                  
                     else if (line.ToLower().Contains("httprequest"))
                     {
                         _strHttpRequest = line.Substring(line.IndexOf("=") + 1).Trim();
@@ -89,16 +79,14 @@ namespace ConsoleApplication1
             _client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(
                 new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            _client.DefaultRequestHeaders.Add("SurveyId", _strSurveyId);
-            _client.DefaultRequestHeaders.Add("PublisherKey", _strPublishToken);
-            _client.DefaultRequestHeaders.Add("OrgKey", _strOrgKey);
+            _client.DefaultRequestHeaders.Add("SurveyId", _strSurveyId);           
             try
             {
                 if (_strHttpRequest.ToLower() == "post")
                 {
                     var url = await CreateSurveyAnswerAsync(_strjson);
                 }
-                else if (_strHttpRequest.ToLower() == "patch")
+                else if (_strHttpRequest.ToLower() == "put")
                 {
                     var url = await UpdateSurveyAnswer(_strjson);
                 }
@@ -129,7 +117,7 @@ namespace ConsoleApplication1
         static async Task<Uri> UpdateSurveyAnswer(string Jsonstring)
         {          
             var content = new StringContent(Jsonstring, Encoding.UTF8, "application/json");
-            var method = new HttpMethod("PATCH");
+            var method = new HttpMethod("PUT");
             var request = new HttpRequestMessage(method, "api/surveyResponse")
             {
                 Content = content

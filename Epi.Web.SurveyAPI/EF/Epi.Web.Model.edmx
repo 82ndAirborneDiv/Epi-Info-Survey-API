@@ -329,21 +329,8 @@ warning 6002: The table/view 'OSELS_EIWS.dbo.SurveyMetaDataTransform' does not h
           <EntitySet Name="SurveyMetaDataView" EntityType="Self.SurveyMetaDataView" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <EntitySet Name="SurveyResponse" EntityType="Self.SurveyResponse" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" store:Type="Tables" store:Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
-            <DefiningQuery>SELECT 
-[ErrorLog].[ErrorDate] AS [ErrorDate], 
-[ErrorLog].[SurveyId] AS [SurveyId], 
-[ErrorLog].[ResponseId] AS [ResponseId], 
-[ErrorLog].[Comment] AS [Comment], 
-[ErrorLog].[ERROR_NUMBER] AS [ERROR_NUMBER], 
-[ErrorLog].[ERROR_MESSAGE] AS [ERROR_MESSAGE], 
-[ErrorLog].[ERROR_SEVERITY] AS [ERROR_SEVERITY], 
-[ErrorLog].[ERROR_STATE] AS [ERROR_STATE], 
-[ErrorLog].[ERROR_PROCEDURE] AS [ERROR_PROCEDURE], 
-[ErrorLog].[ERROR_LINE] AS [ERROR_LINE], 
-[ErrorLog].[ErrorText] AS [ErrorText], 
-[ErrorLog].[ErrorText2] AS [ErrorText2]
-FROM [dbo].[ErrorLog] AS [ErrorLog]</DefiningQuery>
+          <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+       
           </EntitySet>
           <EntitySet Name="SurveyMetaDataTransform" EntityType="Self.SurveyMetaDataTransform" store:Type="Tables" store:Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
