@@ -239,7 +239,7 @@ namespace Epi.Web.SurveyAPI.Repository
                         surveyresponseBO.DateUpdated =DateTime.Now;
                         surveyresponseBO.DateCompleted =DateTime.Now;
                     }
-                    surveyresponseBO.Status = 2;                  
+                    surveyresponseBO.Status = 3;                  
                     SurveyResponse = Implementation.UpdateSurveyResponse(surveyresponseBO);
                     UserAuthenticationRequestBO = Web.Common.ObjectMapping.Mapper.ToBusinessObject(ResponseId);
                     Implementation.SavePassCode(UserAuthenticationRequestBO);                                                                   

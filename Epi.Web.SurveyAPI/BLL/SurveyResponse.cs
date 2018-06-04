@@ -276,7 +276,7 @@ namespace Epi.Web.SurveyAPI.BLL
                         surveyresponseBO.SurveyId = request.AnswerInfo.SurveyId.ToString();
                         surveyresponseBO.ResponseId = responseid.Value.ToString();
                         surveyresponseBO.XML = Xml;
-                        surveyresponseBO.Status = 2;
+                        surveyresponseBO.Status = 3;
                         surveyresponseBO.RecordSourceId = (int)ValidationRecordSourceId.MA;
                         System.DateTime dateTime = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
                         if (updatedtime.Value != null)
