@@ -41,8 +41,9 @@ namespace Epi.Web.SurveyAPI.EF
                 {
                     result.UserPublishKey = entity.UserPublishKey;
                 }
-                result.SurveyType = entity.SurveyTypeId; 
-            
+                result.SurveyType = entity.SurveyTypeId;
+                result.ParentId = entity.ParentId.ToString();
+
             return result;
         }
 
@@ -104,25 +105,30 @@ namespace Epi.Web.SurveyAPI.EF
         /// <returns>A SurveyMetaData entity.</returns>
         internal static SurveyMetaData Map(SurveyInfoBO businessobject)
         {
-            return new SurveyMetaData
+            SurveyMetaData SurveyMetaData = new SurveyMetaData();
+
+            SurveyMetaData.SurveyId = new Guid(businessobject.SurveyId);
+            SurveyMetaData.SurveyName = businessobject.SurveyName;
+            SurveyMetaData.SurveyNumber = businessobject.SurveyNumber;
+            SurveyMetaData.TemplateXML = businessobject.XML;
+            SurveyMetaData.IntroductionText = businessobject.IntroductionText;
+            SurveyMetaData.ExitText = businessobject.ExitText;
+            SurveyMetaData.OrganizationName = businessobject.OrganizationName;
+            SurveyMetaData.DepartmentName = businessobject.DepartmentName;
+            SurveyMetaData.ClosingDate = businessobject.ClosingDate;
+            SurveyMetaData.UserPublishKey = businessobject.UserPublishKey;
+            SurveyMetaData.SurveyTypeId = businessobject.SurveyType;
+            SurveyMetaData.TemplateXMLSize = businessobject.TemplateXMLSize;
+            SurveyMetaData.DateCreated = businessobject.DateCreated;
+            SurveyMetaData.IsDraftMode = businessobject.IsDraftMode;
+            SurveyMetaData.StartDate = businessobject.StartDate;          
+            SurveyMetaData.IsSQLProject = businessobject.IsSqlProject;                    
+            if (!string.IsNullOrEmpty(businessobject.ParentId))
             {
-                SurveyId = new Guid(businessobject.SurveyId),
-                SurveyName = businessobject.SurveyName,
-                SurveyNumber = businessobject.SurveyNumber,
-                TemplateXML = businessobject.XML,
-                IntroductionText = businessobject.IntroductionText,
-                ExitText = businessobject.ExitText,
-                OrganizationName = businessobject.OrganizationName,
-                DepartmentName = businessobject.DepartmentName,
-                ClosingDate = businessobject.ClosingDate ,
-                UserPublishKey=businessobject.UserPublishKey,
-                SurveyTypeId = businessobject.SurveyType,
-                TemplateXMLSize = businessobject.TemplateXMLSize,
-                DateCreated = businessobject.DateCreated,
-                IsDraftMode = businessobject.IsDraftMode,
-                StartDate = businessobject.StartDate,
-                IsSQLProject = businessobject._IsSqlProject
-            };
+                SurveyMetaData.ParentId = new Guid(businessobject.ParentId);
+            }
+
+            return SurveyMetaData;
         }
 
         /// <summary>
@@ -141,7 +147,8 @@ namespace Epi.Web.SurveyAPI.EF
                 UserPublishKey = entity.UserPublishKey,
                 DateUpdated = entity.DateUpdated,
                 DateCompleted = entity.DateCompleted,
-                RecordSourceId=entity.RecordSourceId
+                RecordSourceId=entity.RecordSourceId               
+
             };
         }
 
@@ -173,20 +180,39 @@ namespace Epi.Web.SurveyAPI.EF
         /// <returns>A SurveyInfoBO business object.</returns>
         internal static SurveyResponseBO Map(SurveyResponse entity)
         {
-           
-            return new SurveyResponseBO
+
+            /* return new SurveyResponseBO
+             {
+                 SurveyId = entity.SurveyId.ToString(),
+                 ResponseId = entity.ResponseId.ToString(),
+                 XML = entity.ResponseXML,
+                 Status = entity.StatusId,
+                  DateUpdated = entity.DateUpdated,
+                 DateCompleted = entity.DateCompleted,
+                 TemplateXMLSize = (long)entity.ResponseXMLSize,
+                  DateCreated = entity.DateCreated,
+                  IsDraftMode = entity.IsDraftMode ,
+                  RecordSourceId=(int)entity.RecordSourceId
+
+             };*/
+
+            SurveyResponseBO SurveyResponseBO = new SurveyResponseBO();
+
+            SurveyResponseBO.SurveyId = entity.SurveyId.ToString();
+            SurveyResponseBO.ResponseId = entity.ResponseId.ToString();
+            SurveyResponseBO.XML = entity.ResponseXML;
+            SurveyResponseBO.Status = entity.StatusId;
+            SurveyResponseBO.DateUpdated = entity.DateUpdated;
+            SurveyResponseBO.DateCompleted = entity.DateCompleted;
+            SurveyResponseBO.TemplateXMLSize = (long)entity.ResponseXMLSize;
+            SurveyResponseBO.DateCreated = entity.DateCreated;
+            SurveyResponseBO.IsDraftMode = entity.IsDraftMode;
+            SurveyResponseBO.RecordSourceId = (int)entity.RecordSourceId;
+            if (entity.RelateParentId != null)
             {
-                SurveyId = entity.SurveyId.ToString(),
-                ResponseId = entity.ResponseId.ToString(),
-                XML = entity.ResponseXML,
-                Status = entity.StatusId,
-                 DateUpdated = entity.DateUpdated,
-                DateCompleted = entity.DateCompleted,
-                TemplateXMLSize = (long)entity.ResponseXMLSize,
-                 DateCreated = entity.DateCreated,
-                 IsDraftMode = entity.IsDraftMode ,
-                 RecordSourceId=(int)entity.RecordSourceId
-            };
+                SurveyResponseBO.RelateParentId = entity.RelateParentId.ToString();
+            }
+            return SurveyResponseBO;
         }
 
         internal static List<SurveyResponseBO> Map(List<SurveyResponse> entities)
@@ -267,7 +293,7 @@ namespace Epi.Web.SurveyAPI.EF
         /// <returns>A SurveyMetaData entity.</returns>
         internal static SurveyResponse ToEF(SurveyResponseBO pBO)
         {
-            return new SurveyResponse
+           /* return new SurveyResponse
             {
                 SurveyId = new Guid(pBO.SurveyId),
                 ResponseId = new Guid(pBO.ResponseId),
@@ -280,7 +306,29 @@ namespace Epi.Web.SurveyAPI.EF
                 IsDraftMode = pBO.IsDraftMode,
                 RecordSourceId=pBO.RecordSourceId
 
-            };
+            };*/
+
+            SurveyResponse SurveyResponse = new SurveyResponse();
+            Guid RelateParentId = Guid.Empty;
+            if (!string.IsNullOrEmpty(pBO.RelateParentId))
+            {
+                RelateParentId = new Guid(pBO.RelateParentId);
+            }           
+            SurveyResponse.SurveyId = new Guid(pBO.SurveyId);
+            SurveyResponse.ResponseId = new Guid(pBO.ResponseId);
+            SurveyResponse.ResponseXML = pBO.XML;
+            SurveyResponse.StatusId = pBO.Status;
+            SurveyResponse.ResponseXMLSize = pBO.TemplateXMLSize;
+            SurveyResponse.DateUpdated = pBO.DateUpdated;
+            SurveyResponse.DateCompleted = pBO.DateCompleted;
+            SurveyResponse.DateCreated = pBO.DateCreated;
+            SurveyResponse.IsDraftMode = pBO.IsDraftMode;
+            SurveyResponse.RecordSourceId = pBO.RecordSourceId;
+            if (!string.IsNullOrEmpty(pBO.RelateParentId) && RelateParentId != Guid.Empty)
+            {
+                SurveyResponse.RelateParentId = new Guid(pBO.RelateParentId);
+            }           
+            return SurveyResponse;
         }
         internal static UserAuthenticationResponseBO ToAuthenticationResponseBO(UserAuthenticationRequestBO AuthenticationRequestBO)
         {

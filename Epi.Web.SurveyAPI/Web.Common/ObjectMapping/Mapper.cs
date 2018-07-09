@@ -40,6 +40,7 @@ namespace Epi.Web.SurveyAPI.Web.Common.ObjectMapping
                 DBConnectionString = pDTO.DBConnectionString,
                 IsSqlProject = pDTO.IsSqlProject,
                 OrganizationId=pDTO.OrganizationId,
+                ParentId = pDTO.ParentId
             };
         }
 
@@ -104,7 +105,8 @@ namespace Epi.Web.SurveyAPI.Web.Common.ObjectMapping
                 StartDate = pBO.StartDate,
 
                 UserPublishKey = pBO.UserPublishKey,
-                OrganizationId=pBO.OrganizationId
+                OrganizationId=pBO.OrganizationId,
+                ParentId = pBO.ParentId
 
 
 
@@ -141,7 +143,8 @@ namespace Epi.Web.SurveyAPI.Web.Common.ObjectMapping
                 DateCreated = pBO.DateCreated, 
                 Status = pBO.Status,
                 IsDraftMode = pBO.IsDraftMode,
-                RecordSourceId=pBO.RecordSourceId
+                RecordSourceId=pBO.RecordSourceId,
+                RelateParentId=pBO.RelateParentId
             };
         }
         public static List<SurveyAnswerDTO> ToDataTransferObject(List<SurveyResponseBO> pSurveyResposneList)
@@ -172,8 +175,8 @@ namespace Epi.Web.SurveyAPI.Web.Common.ObjectMapping
                 DateCreated = pDTO.DateCreated,
                 Status = pDTO.Status,
                 IsDraftMode = pDTO.IsDraftMode,
-                RecordSourceId=pDTO.RecordSourceId
-                
+                RecordSourceId=pDTO.RecordSourceId,               
+
             };
         }
 

@@ -35,5 +35,8 @@ namespace Epi.Web.SurveyAPI.Web.Common.DTO
         [DataMember]
         public int RecordSourceId { get; set; }
 
+        [DataMember]
+        public string RelateParentId { get; set; }
+
     }
 }

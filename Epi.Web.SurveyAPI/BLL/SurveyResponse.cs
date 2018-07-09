@@ -244,6 +244,11 @@ namespace Epi.Web.SurveyAPI.BLL
                 {
                     request.AnswerInfo.SurveyQuestionAnswerList.Remove(responseid.Key);
                 }
+                var relateparentid = request.AnswerInfo.SurveyQuestionAnswerList.Where(x => x.Key.ToLower() == "fkey").FirstOrDefault();
+                if (relateparentid.Key != null)
+                {
+                    request.AnswerInfo.SurveyQuestionAnswerList.Remove(relateparentid.Key);
+                }
 
                 var updatedtime = request.AnswerInfo.SurveyQuestionAnswerList.Where(x => x.Key.ToLower() == "_updatestamp").FirstOrDefault();
                  if (updatedtime.Key != null)
@@ -271,25 +276,69 @@ namespace Epi.Web.SurveyAPI.BLL
                         SurveyResponse = InsertSurveyResponse(Mapper.ToBusinessObject(Xml, request.AnswerInfo.SurveyId.ToString()));
                     }
                     else
-                    {//Insert Survey Response
-                        SurveyResponseBO surveyresponseBO = new SurveyResponseBO();
-                        surveyresponseBO.SurveyId = request.AnswerInfo.SurveyId.ToString();
-                        surveyresponseBO.ResponseId = responseid.Value.ToString();
-                        surveyresponseBO.XML = Xml;
-                        surveyresponseBO.Status = 3;
-                        surveyresponseBO.RecordSourceId = (int)ValidationRecordSourceId.MA;
-                        System.DateTime dateTime = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-                        if (updatedtime.Value != null)
+                    {//Insert  Response
+                        if (relateparentid.Value == null)
                         {
-                            surveyresponseBO.DateUpdated = dateTime.AddMilliseconds(Convert.ToDouble(updatedtime.Value.ToString())).ToLocalTime();                           
+                            SurveyResponseBO surveyresponseBO = new SurveyResponseBO();
+                            surveyresponseBO.SurveyId = request.AnswerInfo.SurveyId.ToString();
+                            surveyresponseBO.ResponseId = responseid.Value.ToString();
+                            surveyresponseBO.XML = Xml;
+                            surveyresponseBO.Status = 3;
+                            surveyresponseBO.RecordSourceId = (int)ValidationRecordSourceId.MA;
+                            System.DateTime dateTime = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                            if (updatedtime.Value != null)
+                            {
+                                surveyresponseBO.DateUpdated = dateTime.AddMilliseconds(Convert.ToDouble(updatedtime.Value.ToString())).ToLocalTime();
+                            }
+                            else
+                            {
+                                surveyresponseBO.DateUpdated = DateTime.Now;
+                            }
+                            surveyresponseBO.DateCreated = surveyresponseBO.DateUpdated;
+                            surveyresponseBO.DateCompleted = surveyresponseBO.DateUpdated;
+                            SurveyResponse = InsertSurveyResponse(surveyresponseBO);
                         }
-                        else
+                    else
                         {
-                            surveyresponseBO.DateUpdated = DateTime.Now;
+                            try
+                            {
+                                var survey = GetSurveyResponseById(new List<string> { relateparentid.Value }, UserPublishKey);
+                            }
+                            catch(Exception ex)//insert parent response
+                            {
+                                SurveyResponseBO surveyresponsebO = new SurveyResponseBO();
+                                surveyresponsebO.SurveyId = SurveyBOList[0].ParentId;
+                                surveyresponsebO.ResponseId = relateparentid.Value.ToString();
+                                surveyresponsebO.XML = "  ";
+                                surveyresponsebO.Status = 3;
+                                surveyresponsebO.RecordSourceId = (int)ValidationRecordSourceId.MA;
+                                surveyresponsebO.DateUpdated = DateTime.Now;
+                                surveyresponsebO.DateCreated = surveyresponsebO.DateUpdated;
+                                surveyresponsebO.DateCompleted = surveyresponsebO.DateUpdated;
+                                surveyresponsebO = InsertSurveyResponse(surveyresponsebO);                               
                         }
-                        surveyresponseBO.DateCreated = surveyresponseBO.DateUpdated;
-                        surveyresponseBO.DateCompleted = surveyresponseBO.DateUpdated;
-                        SurveyResponse = InsertSurveyResponse(surveyresponseBO);
+                        //insert child response
+                            SurveyResponseBO surveyresponseBO = new SurveyResponseBO();
+                            surveyresponseBO.SurveyId = request.AnswerInfo.SurveyId.ToString();
+                            surveyresponseBO.ResponseId = responseid.Value.ToString();
+                            surveyresponseBO.XML = Xml;
+                            surveyresponseBO.Status = 3;
+                            surveyresponseBO.RecordSourceId = (int)ValidationRecordSourceId.MA;
+                            surveyresponseBO.RelateParentId = relateparentid.Value;
+                            System.DateTime dateTime = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                            if (updatedtime.Value != null)
+                            {
+                                surveyresponseBO.DateUpdated = dateTime.AddMilliseconds(Convert.ToDouble(updatedtime.Value.ToString())).ToLocalTime();
+                            }
+                            else
+                            {
+                                surveyresponseBO.DateUpdated = DateTime.Now;
+                            }
+                            surveyresponseBO.DateCreated = surveyresponseBO.DateUpdated;
+                            surveyresponseBO.DateCompleted = surveyresponseBO.DateUpdated;
+                            SurveyResponse = InsertSurveyResponse(surveyresponseBO);
+
+                        }
                     }
 
                     //Save PassCode
@@ -407,6 +456,16 @@ namespace Epi.Web.SurveyAPI.BLL
         public void InsertErrorLog(Dictionary<string, string> pValue)
         {            
             this.SurveyResponseDao.InsertErrorLog(pValue);           
+        }
+
+        public SurveyResponseBO InsertChildSurveyResponse(SurveyResponseBO pValue, SurveyInfoBO ParentSurveyInfo, string RelateParentId)
+        {
+
+            SurveyResponseBO result = pValue;
+          //  pValue.ParentId = ParentSurveyInfo.ParentId;
+            pValue.RelateParentId = RelateParentId;
+            this.SurveyResponseDao.InsertSurveyResponse(pValue);
+            return result;
         }
     }
 }

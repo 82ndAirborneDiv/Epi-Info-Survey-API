@@ -26,6 +26,7 @@ namespace Epi.Web.SurveyAPI.Web.Common.BusinessObject
         private string _StatusText;
         private bool _IsDraftMode;
         private DateTime _StartDate;
+        private string _ParentId;
         public string _DBConnectionString { get; set; }
         public bool _IsSqlProject { get; set; }
         public int OrganizationId { get; set; }
@@ -150,9 +151,15 @@ namespace Epi.Web.SurveyAPI.Web.Common.BusinessObject
             get { return _DBConnectionString; }
             set { _DBConnectionString = value; }
         }
+        [DataMember]
+        public string ParentId
+        {
+            get { return _ParentId; }
+            set { _ParentId = value; }
+        }
 
 
 
-        
+
     }
 }

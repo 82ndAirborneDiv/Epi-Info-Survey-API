@@ -718,47 +718,27 @@
             Initialize a new SurveyAPIEntities object.
             </summary>
         </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.lk_Status">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.lk_SurveyType">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.SurveyMetaDatas">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.SurveyResponses">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.Organizations">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.sysdiagrams">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
         <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.Addresses">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.States">
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.Admins">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.Admins">
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.Canvas">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.DataAccessRules">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.Datasources">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -773,7 +753,77 @@
             No Metadata Documentation available.
             </summary>
         </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.lk_Status">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.lk_SurveyType">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.Organizations">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.ResponseDisplaySettings">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.ResponseXmls">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.Roles">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.SharedCanvases">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.SourceTables">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.States">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.SurveyMetaDatas">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
         <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.SurveyMetaDataViews">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.SurveyResponses">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.SurveyResponseTrackings">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.Users">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.UserOrganizations">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -783,39 +833,14 @@
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.SurveyMetaDataTransforms">
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.familysets">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddTolk_Status(Epi.Web.SurveyAPI.EF.lk_Status)">
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.SurveyMetaDataTransforms">
             <summary>
-            Deprecated Method for adding a new object to the lk_Status EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddTolk_SurveyType(Epi.Web.SurveyAPI.EF.lk_SurveyType)">
-            <summary>
-            Deprecated Method for adding a new object to the lk_SurveyType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToSurveyMetaDatas(Epi.Web.SurveyAPI.EF.SurveyMetaData)">
-            <summary>
-            Deprecated Method for adding a new object to the SurveyMetaDatas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToSurveyResponses(Epi.Web.SurveyAPI.EF.SurveyResponse)">
-            <summary>
-            Deprecated Method for adding a new object to the SurveyResponses EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToOrganizations(Epi.Web.SurveyAPI.EF.Organization)">
-            <summary>
-            Deprecated Method for adding a new object to the Organizations EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
-        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddTosysdiagrams(Epi.Web.SurveyAPI.EF.sysdiagram)">
-            <summary>
-            Deprecated Method for adding a new object to the sysdiagrams EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            No Metadata Documentation available.
             </summary>
         </member>
         <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToAddresses(Epi.Web.SurveyAPI.EF.Address)">
@@ -823,14 +848,24 @@
             Deprecated Method for adding a new object to the Addresses EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
             </summary>
         </member>
-        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToStates(Epi.Web.SurveyAPI.EF.State)">
-            <summary>
-            Deprecated Method for adding a new object to the States EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-            </summary>
-        </member>
         <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToAdmins(Epi.Web.SurveyAPI.EF.Admin)">
             <summary>
             Deprecated Method for adding a new object to the Admins EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToCanvas(Epi.Web.SurveyAPI.EF.Canva)">
+            <summary>
+            Deprecated Method for adding a new object to the Canvas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToDataAccessRules(Epi.Web.SurveyAPI.EF.DataAccessRule)">
+            <summary>
+            Deprecated Method for adding a new object to the DataAccessRules EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToDatasources(Epi.Web.SurveyAPI.EF.Datasource)">
+            <summary>
+            Deprecated Method for adding a new object to the Datasources EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
             </summary>
         </member>
         <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToEIDatasources(Epi.Web.SurveyAPI.EF.EIDatasource)">
@@ -843,14 +878,89 @@
             Deprecated Method for adding a new object to the lk_RecordSource EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
             </summary>
         </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddTolk_Status(Epi.Web.SurveyAPI.EF.lk_Status)">
+            <summary>
+            Deprecated Method for adding a new object to the lk_Status EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddTolk_SurveyType(Epi.Web.SurveyAPI.EF.lk_SurveyType)">
+            <summary>
+            Deprecated Method for adding a new object to the lk_SurveyType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToOrganizations(Epi.Web.SurveyAPI.EF.Organization)">
+            <summary>
+            Deprecated Method for adding a new object to the Organizations EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToResponseDisplaySettings(Epi.Web.SurveyAPI.EF.ResponseDisplaySetting)">
+            <summary>
+            Deprecated Method for adding a new object to the ResponseDisplaySettings EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToResponseXmls(Epi.Web.SurveyAPI.EF.ResponseXml)">
+            <summary>
+            Deprecated Method for adding a new object to the ResponseXmls EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToRoles(Epi.Web.SurveyAPI.EF.Role)">
+            <summary>
+            Deprecated Method for adding a new object to the Roles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToSharedCanvases(Epi.Web.SurveyAPI.EF.SharedCanvas)">
+            <summary>
+            Deprecated Method for adding a new object to the SharedCanvases EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToSourceTables(Epi.Web.SurveyAPI.EF.SourceTable)">
+            <summary>
+            Deprecated Method for adding a new object to the SourceTables EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToStates(Epi.Web.SurveyAPI.EF.State)">
+            <summary>
+            Deprecated Method for adding a new object to the States EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToSurveyMetaDatas(Epi.Web.SurveyAPI.EF.SurveyMetaData)">
+            <summary>
+            Deprecated Method for adding a new object to the SurveyMetaDatas EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
         <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToSurveyMetaDataViews(Epi.Web.SurveyAPI.EF.SurveyMetaDataView)">
             <summary>
             Deprecated Method for adding a new object to the SurveyMetaDataViews EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
             </summary>
         </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToSurveyResponses(Epi.Web.SurveyAPI.EF.SurveyResponse)">
+            <summary>
+            Deprecated Method for adding a new object to the SurveyResponses EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToSurveyResponseTrackings(Epi.Web.SurveyAPI.EF.SurveyResponseTracking)">
+            <summary>
+            Deprecated Method for adding a new object to the SurveyResponseTrackings EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToUsers(Epi.Web.SurveyAPI.EF.User)">
+            <summary>
+            Deprecated Method for adding a new object to the Users EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToUserOrganizations(Epi.Web.SurveyAPI.EF.UserOrganization)">
+            <summary>
+            Deprecated Method for adding a new object to the UserOrganizations EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
         <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToErrorLogs(Epi.Web.SurveyAPI.EF.ErrorLog)">
             <summary>
             Deprecated Method for adding a new object to the ErrorLogs EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddTofamilysets(Epi.Web.SurveyAPI.EF.familyset)">
+            <summary>
+            Deprecated Method for adding a new object to the familysets EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
             </summary>
         </member>
         <member name="M:Epi.Web.SurveyAPI.EF.SurveyAPIEntities.AddToSurveyMetaDataTransforms(Epi.Web.SurveyAPI.EF.SurveyMetaDataTransform)">
@@ -988,6 +1098,231 @@
             No Metadata Documentation available.
             </summary>
         </member>
+        <member name="T:Epi.Web.SurveyAPI.EF.Canva">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.Canva.CreateCanva(System.Int32,System.Guid,System.String,System.Int32,System.DateTime,System.DateTime,System.Int32,System.String)">
+            <summary>
+            Create a new Canva object.
+            </summary>
+            <param name="canvasID">Initial value of the CanvasID property.</param>
+            <param name="canvasGUID">Initial value of the CanvasGUID property.</param>
+            <param name="canvasName">Initial value of the CanvasName property.</param>
+            <param name="userID">Initial value of the UserID property.</param>
+            <param name="createdDate">Initial value of the CreatedDate property.</param>
+            <param name="modifiedDate">Initial value of the ModifiedDate property.</param>
+            <param name="datasourceID">Initial value of the DatasourceID property.</param>
+            <param name="canvasContent">Initial value of the CanvasContent property.</param>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Canva.CanvasID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Canva.CanvasGUID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Canva.CanvasName">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Canva.UserID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Canva.CanvasDescription">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Canva.CreatedDate">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Canva.ModifiedDate">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Canva.DatasourceID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Canva.CanvasContent">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Canva.Datasource">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Canva.DatasourceReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Canva.User">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Canva.UserReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:Epi.Web.SurveyAPI.EF.DataAccessRule">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.DataAccessRule.CreateDataAccessRule(System.Int32)">
+            <summary>
+            Create a new DataAccessRule object.
+            </summary>
+            <param name="ruleId">Initial value of the RuleId property.</param>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.DataAccessRule.RuleId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.DataAccessRule.RuleName">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.DataAccessRule.RuleDescription">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:Epi.Web.SurveyAPI.EF.Datasource">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.Datasource.CreateDatasource(System.Int32,System.Int32,System.String,System.Boolean,System.String,System.Boolean)">
+            <summary>
+            Create a new Datasource object.
+            </summary>
+            <param name="datasourceID">Initial value of the DatasourceID property.</param>
+            <param name="organizationID">Initial value of the OrganizationID property.</param>
+            <param name="databaseType">Initial value of the DatabaseType property.</param>
+            <param name="eIWSDatasource">Initial value of the EIWSDatasource property.</param>
+            <param name="databaseObject">Initial value of the DatabaseObject property.</param>
+            <param name="active">Initial value of the active property.</param>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.DatasourceID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.DatasourceName">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.OrganizationID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.DatasourceServerName">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.DatabaseType">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.InitialCatalog">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.PersistSecurityInfo">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.EIWSDatasource">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.EIWSSurveyId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.DatabaseUserID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.Password">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.DatabaseObject">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.SQLQuery">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.SQLText">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.active">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.portnumber">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.Canvas">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.Organization">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.OrganizationReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Datasource.Users">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
         <member name="T:Epi.Web.SurveyAPI.EF.EIDatasource">
             <summary>
             No Metadata Documentation available.
@@ -1121,6 +1456,133 @@
             No Metadata Documentation available.
             </summary>
         </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.ErrorLog.XML">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:Epi.Web.SurveyAPI.EF.familyset">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.familyset.Createfamilyset(System.Guid,System.Int32,System.Int32,System.DateTime,System.String,System.String,System.Guid,System.Int64,System.DateTime,System.Int32,System.Boolean,System.DateTime)">
+            <summary>
+            Create a new familyset object.
+            </summary>
+            <param name="surveyId">Initial value of the SurveyId property.</param>
+            <param name="ownerId">Initial value of the OwnerId property.</param>
+            <param name="surveyTypeId">Initial value of the SurveyTypeId property.</param>
+            <param name="closingDate">Initial value of the ClosingDate property.</param>
+            <param name="surveyName">Initial value of the SurveyName property.</param>
+            <param name="templateXML">Initial value of the TemplateXML property.</param>
+            <param name="userPublishKey">Initial value of the UserPublishKey property.</param>
+            <param name="templateXMLSize">Initial value of the TemplateXMLSize property.</param>
+            <param name="dateCreated">Initial value of the DateCreated property.</param>
+            <param name="organizationId">Initial value of the OrganizationId property.</param>
+            <param name="isDraftMode">Initial value of the IsDraftMode property.</param>
+            <param name="startDate">Initial value of the StartDate property.</param>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.SurveyId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.OwnerId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.SurveyNumber">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.SurveyTypeId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.ClosingDate">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.SurveyName">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.OrganizationName">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.DepartmentName">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.IntroductionText">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.TemplateXML">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.ExitText">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.UserPublishKey">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.TemplateXMLSize">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.DateCreated">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.OrganizationId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.IsDraftMode">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.StartDate">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.ParentId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.ViewId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.familyset.IsSQLProject">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
         <member name="T:Epi.Web.SurveyAPI.EF.lk_RecordSource">
             <summary>
             No Metadata Documentation available.
@@ -1246,12 +1708,190 @@
             No Metadata Documentation available.
             </summary>
         </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Organization.Admins">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Organization.Datasources">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
         <member name="P:Epi.Web.SurveyAPI.EF.Organization.SurveyMetaDatas">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.Organization.Admins">
+        <member name="P:Epi.Web.SurveyAPI.EF.Organization.UserOrganizations">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Organization.SurveyMetaDatas1">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:Epi.Web.SurveyAPI.EF.ResponseDisplaySetting">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.ResponseDisplaySetting.CreateResponseDisplaySetting(System.Guid,System.String,System.Int32)">
+            <summary>
+            Create a new ResponseDisplaySetting object.
+            </summary>
+            <param name="formId">Initial value of the FormId property.</param>
+            <param name="columnName">Initial value of the ColumnName property.</param>
+            <param name="sortOrder">Initial value of the SortOrder property.</param>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.ResponseDisplaySetting.FormId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.ResponseDisplaySetting.ColumnName">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.ResponseDisplaySetting.SortOrder">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.ResponseDisplaySetting.SurveyMetaData">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.ResponseDisplaySetting.SurveyMetaDataReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:Epi.Web.SurveyAPI.EF.ResponseXml">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.ResponseXml.CreateResponseXml(System.Guid,System.String)">
+            <summary>
+            Create a new ResponseXml object.
+            </summary>
+            <param name="responseId">Initial value of the ResponseId property.</param>
+            <param name="xml">Initial value of the Xml property.</param>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.ResponseXml.ResponseId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.ResponseXml.Xml">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.ResponseXml.UserId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.ResponseXml.IsNewRecord">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:Epi.Web.SurveyAPI.EF.Role">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.Role.CreateRole(System.Int32,System.Int32,System.String)">
+            <summary>
+            Create a new Role object.
+            </summary>
+            <param name="roleID">Initial value of the RoleID property.</param>
+            <param name="roleValue">Initial value of the RoleValue property.</param>
+            <param name="roleDescription">Initial value of the RoleDescription property.</param>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Role.RoleID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Role.RoleValue">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Role.RoleDescription">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.Role.UserOrganizations">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:Epi.Web.SurveyAPI.EF.SharedCanvas">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SharedCanvas.CreateSharedCanvas(System.Int32,System.Int32)">
+            <summary>
+            Create a new SharedCanvas object.
+            </summary>
+            <param name="canvasID">Initial value of the CanvasID property.</param>
+            <param name="userID">Initial value of the UserID property.</param>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SharedCanvas.CanvasID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SharedCanvas.UserID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SharedCanvas.User">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SharedCanvas.UserReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:Epi.Web.SurveyAPI.EF.SourceTable">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.SourceTable.CreateSourceTable(System.String,System.Guid,System.String)">
+            <summary>
+            Create a new SourceTable object.
+            </summary>
+            <param name="sourceTableName">Initial value of the SourceTableName property.</param>
+            <param name="formId">Initial value of the FormId property.</param>
+            <param name="sourceTableXml">Initial value of the SourceTableXml property.</param>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SourceTable.SourceTableName">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SourceTable.FormId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SourceTable.SourceTableXml">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -1289,11 +1929,12 @@
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="M:Epi.Web.SurveyAPI.EF.SurveyMetaData.CreateSurveyMetaData(System.Guid,System.Int32,System.DateTime,System.String,System.String,System.Guid,System.Int64,System.DateTime,System.Int32,System.DateTime,System.Boolean)">
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyMetaData.CreateSurveyMetaData(System.Guid,System.Int32,System.Int32,System.DateTime,System.String,System.String,System.Guid,System.Int64,System.DateTime,System.Int32,System.Boolean,System.DateTime)">
             <summary>
             Create a new SurveyMetaData object.
             </summary>
             <param name="surveyId">Initial value of the SurveyId property.</param>
+            <param name="ownerId">Initial value of the OwnerId property.</param>
             <param name="surveyTypeId">Initial value of the SurveyTypeId property.</param>
             <param name="closingDate">Initial value of the ClosingDate property.</param>
             <param name="surveyName">Initial value of the SurveyName property.</param>
@@ -1302,10 +1943,15 @@
             <param name="templateXMLSize">Initial value of the TemplateXMLSize property.</param>
             <param name="dateCreated">Initial value of the DateCreated property.</param>
             <param name="organizationId">Initial value of the OrganizationId property.</param>
-            <param name="startDate">Initial value of the StartDate property.</param>
             <param name="isDraftMode">Initial value of the IsDraftMode property.</param>
+            <param name="startDate">Initial value of the StartDate property.</param>
         </member>
         <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.SurveyId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.OwnerId">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -1375,12 +2021,42 @@
             No Metadata Documentation available.
             </summary>
         </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.IsDraftMode">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
         <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.StartDate">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.IsDraftMode">
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.ParentId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.ViewId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.IsSQLProject">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.IsShareable">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.ShowAllRecords">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.DataAccessRuleId">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -1390,7 +2066,7 @@
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.IsSQLProject">
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.EIDatasources">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -1405,11 +2081,6 @@
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.SurveyResponses">
-            <summary>
-            No Metadata Documentation available.
-            </summary>
-        </member>
         <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.Organization">
             <summary>
             No Metadata Documentation available.
@@ -1420,12 +2091,27 @@
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.EIDatasources">
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.ResponseDisplaySettings">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
         <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.SurveyMetaDataTransforms">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.SurveyResponses">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.Organizations">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyMetaData.Users">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -1511,7 +2197,7 @@
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="M:Epi.Web.SurveyAPI.EF.SurveyResponse.CreateSurveyResponse(System.Guid,System.Guid,System.DateTime,System.Int32,System.String,System.DateTime,System.Boolean)">
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyResponse.CreateSurveyResponse(System.Guid,System.Guid,System.DateTime,System.Int32,System.String,System.DateTime,System.Boolean,System.Boolean)">
             <summary>
             Create a new SurveyResponse object.
             </summary>
@@ -1522,6 +2208,7 @@
             <param name="responseXML">Initial value of the ResponseXML property.</param>
             <param name="dateCreated">Initial value of the DateCreated property.</param>
             <param name="isDraftMode">Initial value of the IsDraftMode property.</param>
+            <param name="isLocked">Initial value of the IsLocked property.</param>
         </member>
         <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponse.ResponseId">
             <summary>
@@ -1573,7 +2260,37 @@
             No Metadata Documentation available.
             </summary>
         </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponse.IsLocked">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponse.ParentRecordId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponse.RelateParentId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
         <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponse.RecordSourceId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponse.OrganizationId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponse.lk_RecordSource">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponse.lk_RecordSourceReference">
             <summary>
             No Metadata Documentation available.
             </summary>
@@ -1598,50 +2315,227 @@
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponse.lk_RecordSource">
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponse.SurveyResponse1">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponse.lk_RecordSourceReference">
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponse.SurveyResponse2">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="T:Epi.Web.SurveyAPI.EF.sysdiagram">
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponse.SurveyResponse2Reference">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="M:Epi.Web.SurveyAPI.EF.sysdiagram.Createsysdiagram(System.String,System.Int32,System.Int32)">
-            <summary>
-            Create a new sysdiagram object.
-            </summary>
-            <param name="name">Initial value of the name property.</param>
-            <param name="principal_id">Initial value of the principal_id property.</param>
-            <param name="diagram_id">Initial value of the diagram_id property.</param>
-        </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.sysdiagram.name">
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponse.SurveyResponseTracking">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.sysdiagram.principal_id">
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponse.SurveyResponseTrackingReference">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.sysdiagram.diagram_id">
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponse.Users">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.sysdiagram.version">
+        <member name="T:Epi.Web.SurveyAPI.EF.SurveyResponseTracking">
             <summary>
             No Metadata Documentation available.
             </summary>
         </member>
-        <member name="P:Epi.Web.SurveyAPI.EF.sysdiagram.definition">
+        <member name="M:Epi.Web.SurveyAPI.EF.SurveyResponseTracking.CreateSurveyResponseTracking(System.Guid,System.Boolean,System.Boolean)">
+            <summary>
+            Create a new SurveyResponseTracking object.
+            </summary>
+            <param name="responseId">Initial value of the ResponseId property.</param>
+            <param name="isSQLResponse">Initial value of the IsSQLResponse property.</param>
+            <param name="isResponseinsertedToEpi7">Initial value of the IsResponseinsertedToEpi7 property.</param>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponseTracking.ResponseId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponseTracking.IsSQLResponse">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponseTracking.IsResponseinsertedToEpi7">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponseTracking.SurveyResponse">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.SurveyResponseTracking.SurveyResponseReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:Epi.Web.SurveyAPI.EF.User">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.User.CreateUser(System.Int32,System.String,System.String,System.String,System.String,System.Boolean,System.String,System.String)">
+            <summary>
+            Create a new User object.
+            </summary>
+            <param name="userID">Initial value of the UserID property.</param>
+            <param name="userName">Initial value of the UserName property.</param>
+            <param name="firstName">Initial value of the FirstName property.</param>
+            <param name="lastName">Initial value of the LastName property.</param>
+            <param name="passwordHash">Initial value of the PasswordHash property.</param>
+            <param name="resetPassword">Initial value of the ResetPassword property.</param>
+            <param name="emailAddress">Initial value of the EmailAddress property.</param>
+            <param name="phoneNumber">Initial value of the PhoneNumber property.</param>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.User.UserID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.User.UserName">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.User.FirstName">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.User.LastName">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.User.PasswordHash">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.User.ResetPassword">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.User.EmailAddress">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.User.PhoneNumber">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.User.UGuid">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.User.Canvas">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.User.SharedCanvases">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.User.UserOrganizations">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.User.Datasources">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.User.SurveyMetaDatas">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.User.SurveyResponses">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="T:Epi.Web.SurveyAPI.EF.UserOrganization">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="M:Epi.Web.SurveyAPI.EF.UserOrganization.CreateUserOrganization(System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Create a new UserOrganization object.
+            </summary>
+            <param name="userID">Initial value of the UserID property.</param>
+            <param name="organizationID">Initial value of the OrganizationID property.</param>
+            <param name="roleId">Initial value of the RoleId property.</param>
+            <param name="active">Initial value of the Active property.</param>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.UserOrganization.UserID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.UserOrganization.OrganizationID">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.UserOrganization.RoleId">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.UserOrganization.Active">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.UserOrganization.Organization">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.UserOrganization.OrganizationReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.UserOrganization.Role">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.UserOrganization.RoleReference">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.UserOrganization.User">
+            <summary>
+            No Metadata Documentation available.
+            </summary>
+        </member>
+        <member name="P:Epi.Web.SurveyAPI.EF.UserOrganization.UserReference">
             <summary>
             No Metadata Documentation available.
             </summary>

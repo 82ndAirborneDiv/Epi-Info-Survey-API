@@ -27,6 +27,7 @@ namespace Epi.Web.SurveyAPI.Web.Common.DTO
         private bool _IsSqlProject;
         private string _DBConnectionString;
         private int _OrganizationId;
+        private string _ParentId;
 
         [DataMember]
         public string SurveyId
@@ -150,6 +151,12 @@ namespace Epi.Web.SurveyAPI.Web.Common.DTO
         {
             get { return _OrganizationId; }
             set { _OrganizationId = value; }
+        }
+        [DataMember]
+        public string ParentId
+        {
+            get { return _ParentId; }
+            set { _ParentId = value; }
         }
 
     }

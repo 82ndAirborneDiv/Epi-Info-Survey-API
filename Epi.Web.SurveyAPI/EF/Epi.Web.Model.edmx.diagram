@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cba4381e96304c2bbc9e497e50c588c1" Name="Diagram1">
+      <Diagram DiagramId="c715fc489dee42be835931d445d68aec" Name="Diagram1">
         <EntityTypeShape EntityType="EIWSModel.Address" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="EIWSModel.Admin" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EIWSModel.Canva" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
@@ -30,10 +30,6 @@
         <EntityTypeShape EntityType="EIWSModel.ErrorLog" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EIWSModel.familyset" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EIWSModel.SurveyMetaDataTransform" Width="1.5" PointX="10.25" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EIWSModel.vwCanvasShare" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EIWSModel.vwCanvasUser" Width="1.5" PointX="12.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EIWSModel.vwOrgsForUser" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EIWSModel.vwUserOrganizationUser" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="true" />
         <AssociationConnector Association="EIWSModel.FK_Address_Admin" ManuallyRouted="false" />
         <AssociationConnector Association="EIWSModel.FK_Admin_Organization" ManuallyRouted="false" />
         <AssociationConnector Association="EIWSModel.FK_Canvas__Datasource" ManuallyRouted="false" />

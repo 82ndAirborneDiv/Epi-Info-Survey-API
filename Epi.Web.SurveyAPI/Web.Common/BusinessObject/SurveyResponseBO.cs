@@ -25,6 +25,7 @@ namespace Epi.Web.SurveyAPI.Web.Common.BusinessObject
         public DateTime DateCreated { get; set; }
         public bool IsDraftMode { get; set; }
         public int RecordSourceId { get; set; }
+        public string RelateParentId { get; set; }
 
 
     }

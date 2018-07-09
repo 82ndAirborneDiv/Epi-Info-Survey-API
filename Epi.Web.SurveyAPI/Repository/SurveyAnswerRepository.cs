@@ -18,6 +18,7 @@ using Epi.Web.SurveyAPI.EF;
 using Epi.Web.SurveyAPI.Web.Common.BusinessObject;
 using Epi.Web.SurveyAPI.Web.Common.ObjectMapping;
 using static Epi.Web.SurveyAPI.BLL.SurveyResponse;
+using Epi.Web.SurveyAPI.Web.Common.BusinessRule;
 
 namespace Epi.Web.SurveyAPI.Repository
 {
@@ -185,6 +186,7 @@ namespace Epi.Web.SurveyAPI.Repository
                 prefilledanswerRequest.AnswerInfo.UserPublishKey = request.PublisherKey;
                 var updatedtime = FilteredAnswerList.Where(x => x.Key.ToLower() == "_updatestamp").FirstOrDefault();
                 var Responsekey = FilteredAnswerList.Where(x => x.Key.ToLower() == "responseid" || x.Key.ToLower() == "id").FirstOrDefault().Key;
+                var fkey = FilteredAnswerList.Where(x => x.Key.ToLower() == "fkey").FirstOrDefault();
                 foreach (KeyValuePair<string, string> entry in FilteredAnswerList)
                 {
                     Values.Add(entry.Key, entry.Value);
@@ -206,13 +208,36 @@ namespace Epi.Web.SurveyAPI.Repository
                 Values.Remove(Responsekey);
                     if(updatedtime.Key!=null)
                 Values.Remove(updatedtime.Key);
-               
+                if (fkey.Key != null)
+                    Values.Remove(fkey.Key);
+
                 prefilledanswerRequest.AnswerInfo.SurveyQuestionAnswerList = Values;
 
                 Dictionary<string, string> ErrorMessageList = new Dictionary<string, string>();
                 List<SurveyInfoBO> SurveyBOList = Implementation.GetSurveyInfo(prefilledanswerRequest);//
                 string Xml = Implementation.CreateResponseXml(prefilledanswerRequest, SurveyBOList);//
                 ErrorMessageList = Implementation.ValidateResponse(SurveyBOList, prefilledanswerRequest);//
+                if (fkey.Key != null)
+                {
+                    try
+                    {
+                        var survey = Implementation.GetSurveyResponseById(new List<string> { fkey.Value }, request.PublisherKey);
+                    }
+                    catch (Exception ex)
+                    {
+                        SurveyResponseBO surveyresponsebO = new SurveyResponseBO();
+                        surveyresponsebO.SurveyId = SurveyBOList[0].ParentId;
+                        surveyresponsebO.ResponseId = fkey.Value.ToString();
+                        surveyresponsebO.XML = "  ";
+                        surveyresponsebO.Status = 3;
+                        surveyresponsebO.RecordSourceId = (int)ValidationRecordSourceId.MA;
+                        surveyresponsebO.DateUpdated = DateTime.Now;
+                        surveyresponsebO.DateCreated = surveyresponsebO.DateUpdated;
+                        surveyresponsebO.DateCompleted = surveyresponsebO.DateUpdated;
+                        surveyresponsebO = Implementation.InsertSurveyResponse(surveyresponsebO);
+
+                    }
+                }
 
                 if (ErrorMessageList.Count() > 0)
                 {
@@ -238,6 +263,10 @@ namespace Epi.Web.SurveyAPI.Repository
                     {
                         surveyresponseBO.DateUpdated =DateTime.Now;
                         surveyresponseBO.DateCompleted =DateTime.Now;
+                    }
+                    if (fkey.Key != null)
+                    {
+                        surveyresponseBO.RelateParentId = fkey.Value;
                     }
                     surveyresponseBO.Status = 3;                  
                     SurveyResponse = Implementation.UpdateSurveyResponse(surveyresponseBO);
