@@ -19,6 +19,7 @@ using Epi.Web.SurveyAPI.Web.Common.BusinessObject;
 using Epi.Web.SurveyAPI.Web.Common.ObjectMapping;
 using static Epi.Web.SurveyAPI.BLL.SurveyResponse;
 using Epi.Web.SurveyAPI.Web.Common.BusinessRule;
+using System.Xml.Linq;
 
 namespace Epi.Web.SurveyAPI.Repository
 {
@@ -41,6 +42,11 @@ namespace Epi.Web.SurveyAPI.Repository
             get; set;
         }
 
+        public string RootID
+        {
+            get; set;
+        }
+
         public SurveyResponseRepository()
         {
         }
@@ -52,7 +58,7 @@ namespace Epi.Web.SurveyAPI.Repository
             {
                 Interfaces.DataInterfaces.ISurveyInfoDao ISurveyInfoDao = new EntitySurveyInfoDao();
                 SurveyInfo Implementation = new BLL.SurveyInfo(ISurveyInfoDao);
-                SurveyControlsResponse = Implementation.GetSurveyControlList(pRequestMessage.SurveyId);
+                SurveyControlsResponse = Implementation.GetSurveyControlsforApi(pRequestMessage.SurveyId);
             }
             catch (Exception ex)
             {
@@ -61,7 +67,64 @@ namespace Epi.Web.SurveyAPI.Repository
             }
             return SurveyControlsResponse;
         }
-      
+
+        public List<SourceTableDTO> GetSourceTables(string SurveyId)
+        {
+            //List<SourceTableBO> list = new List<SourceTableBO>();
+            SourceTablesResponse SourceTables = new SourceTablesResponse();
+            SurveyControlsResponse SurveyControlsResponse = new SurveyControlsResponse();
+            try
+            {
+                Interfaces.DataInterfaces.ISurveyInfoDao ISurveyInfoDao = new EntitySurveyInfoDao();
+                SurveyInfo Implementation = new BLL.SurveyInfo(ISurveyInfoDao);
+                SourceTables.List = Web.Common.ObjectMapping.Mapper.ToSourceTableDTO(Implementation.GetSourceTables(SurveyId));
+            }
+            catch (Exception ex)
+            {
+                SurveyControlsResponse.Message = "Error";
+                throw ex;
+            }
+            return SourceTables.List;
+        }
+
+        public Dictionary<string, string> ProcessValforLegalControls(IEnumerable<SurveyControlDTO> surveyControlList, Dictionary<string, string> SurveyQuestionAnswerList)
+        {
+            List<SourceTableDTO> SourceTables = null;
+            if (string.IsNullOrEmpty(RootID))
+                SourceTables = GetSourceTables(SurveyId.ToString());
+            else
+                SourceTables = GetSourceTables(RootID);
+            if (SourceTables.Count > 0)
+            {
+                foreach (SurveyControlDTO s in surveyControlList)
+                {
+                    if (SurveyQuestionAnswerList.Keys.Contains(s.ControlId))
+                    {
+                        string val = SurveyQuestionAnswerList[s.ControlId];
+                        var SourceTableXml1 = SourceTables.Where(x => x.TableName == s.SourceTableName).Select(y => y.TableXml).ToList();
+                        XDocument SourceTableXml = XDocument.Parse(SourceTableXml1[0].ToString());
+                        var _ControlValues = from _ControlValue in SourceTableXml.Descendants("SourceTable")
+                                             select _ControlValue;
+                        List<string> legalvals = new List<string>();
+                        foreach (var _ControlValue in _ControlValues)
+                        {
+                            var _SourceTableValues = from _SourceTableValue in _ControlValues.Descendants("Item")
+
+                                                     select _SourceTableValue;
+
+                            foreach (var _SourceTableValue in _SourceTableValues)
+                            {
+                                legalvals.Add(_SourceTableValue.Attributes().FirstOrDefault().Value.Trim());
+                            }
+                        }
+                        SurveyQuestionAnswerList[s.ControlId] = legalvals.ElementAt(Convert.ToInt32(val));
+                    }
+                }
+            }
+            return SurveyQuestionAnswerList;
+        }
+
+
         public Dictionary<string,string> ProcessModforRadioControls(IEnumerable<SurveyControlDTO> surveyControlList,Dictionary<string,string>SurveyQuestionAnswerList)
         {            
             foreach (SurveyControlDTO s in surveyControlList)
@@ -117,32 +180,37 @@ namespace Epi.Web.SurveyAPI.Repository
             PreFilledAnswerResponse response;
             SurveyControlsResponse SurveyControlsResponse = new SurveyControlsResponse();
             SurveyControlsRequest surveyControlsRequest = new SurveyControlsRequest();
-            surveyControlsRequest.SurveyId= request.SurveyId.ToString();
-            SurveyControlsResponse = GetSurveyControlsList(surveyControlsRequest);
-            Dictionary<string, string> FilteredAnswerList = new Dictionary<string, string>();
-            var radiolist = SurveyControlsResponse.SurveyControlList.Where(x => x.ControlType == "GroupBoxRadioList");
-            FilteredAnswerList = ProcessModforRadioControls(radiolist, request.SurveyQuestionAnswerListField);
-            var checkboxLsit = SurveyControlsResponse.SurveyControlList.Where(x => x.ControlType == "CheckBox");
-            FilteredAnswerList = ProcessValforCheckBoxControls(checkboxLsit, FilteredAnswerList);
-            var yesNoList = SurveyControlsResponse.SurveyControlList.Where(x => x.ControlType == "YesNo");
-            FilteredAnswerList = ProcessValforYesNoControls(yesNoList, FilteredAnswerList);
+            surveyControlsRequest.SurveyId = request.SurveyId.ToString();
             try
-            {                                  
-                    Interfaces.DataInterfaces.ISurveyResponseDao SurveyResponseDao = new EntitySurveyResponseDao();
-                    BLL.SurveyResponse Implementation = new BLL.SurveyResponse(SurveyResponseDao);
-                    PreFilledAnswerRequest prefilledanswerRequest = new PreFilledAnswerRequest();
-                    Dictionary<string, string> Values = new Dictionary<string, string>();
-                    prefilledanswerRequest.AnswerInfo.UserPublishKey = request.PublisherKey;
-                    prefilledanswerRequest.AnswerInfo.OrganizationKey = request.OrgKey;
-                    prefilledanswerRequest.AnswerInfo.SurveyId = request.SurveyId;
-                    prefilledanswerRequest.AnswerInfo.UserPublishKey = request.PublisherKey;                  
-                    foreach (KeyValuePair<string, string> entry in FilteredAnswerList)
-                    {
-                        Values.Add(entry.Key, entry.Value);
-                    }
-                    prefilledanswerRequest.AnswerInfo.SurveyQuestionAnswerList = Values;
-                    response = Implementation.SetSurveyAnswer(prefilledanswerRequest);
-                    return response;               
+            {
+                Interfaces.DataInterfaces.ISurveyResponseDao SurveyResponseDao = new EntitySurveyResponseDao();
+                BLL.SurveyResponse Implementation = new BLL.SurveyResponse(SurveyResponseDao);
+                PreFilledAnswerRequest prefilledanswerRequest = new PreFilledAnswerRequest();
+                Dictionary<string, string> Values = new Dictionary<string, string>();
+                prefilledanswerRequest.AnswerInfo.UserPublishKey = request.PublisherKey;
+                prefilledanswerRequest.AnswerInfo.OrganizationKey = request.OrgKey;
+                prefilledanswerRequest.AnswerInfo.SurveyId = request.SurveyId;
+                prefilledanswerRequest.AnswerInfo.UserPublishKey = request.PublisherKey;
+                List<SurveyInfoBO> SurveyBOList = GetSurveyInfo(prefilledanswerRequest);
+               GetRootFormId(prefilledanswerRequest);
+                prefilledanswerRequest.AnswerInfo.SurveyId = request.SurveyId;
+                SurveyControlsResponse = GetSurveyControlsList(surveyControlsRequest);
+                Dictionary<string, string> FilteredAnswerList = new Dictionary<string, string>();
+                var radiolist = SurveyControlsResponse.SurveyControlList.Where(x => x.ControlType == "GroupBoxRadioList");
+                FilteredAnswerList = ProcessModforRadioControls(radiolist, request.SurveyQuestionAnswerListField);
+                var checkboxLsit = SurveyControlsResponse.SurveyControlList.Where(x => x.ControlType == "CheckBox");
+                FilteredAnswerList = ProcessValforCheckBoxControls(checkboxLsit, FilteredAnswerList);
+                var yesNoList = SurveyControlsResponse.SurveyControlList.Where(x => x.ControlType == "YesNo");
+                FilteredAnswerList = ProcessValforYesNoControls(yesNoList, FilteredAnswerList);
+                var legalvalList = SurveyControlsResponse.SurveyControlList.Where(x => x.ControlType == "LegalValues");
+                FilteredAnswerList = ProcessValforLegalControls(legalvalList, FilteredAnswerList);
+                foreach (KeyValuePair<string, string> entry in FilteredAnswerList)
+                {
+                    Values.Add(entry.Key, entry.Value);
+                }
+                prefilledanswerRequest.AnswerInfo.SurveyQuestionAnswerList = Values;
+                response = Implementation.SetSurveyAnswer(prefilledanswerRequest);
+                return response;
             }
             catch (Exception ex)
             {
@@ -153,6 +221,30 @@ namespace Epi.Web.SurveyAPI.Repository
                 response.Status = ((BLL.SurveyResponse.Message)1).ToString();
                 return response;
             }
+        }
+
+        public void GetRootFormId(PreFilledAnswerRequest request)
+        {
+            Interfaces.DataInterfaces.ISurveyResponseDao SurveyResponseDao = new EntitySurveyResponseDao();
+            BLL.SurveyResponse Implementation = new BLL.SurveyResponse(SurveyResponseDao);
+            List<SurveyInfoBO> SurveyBOList = Implementation.GetSurveyInfo(request);//
+            if (string.IsNullOrEmpty(SurveyBOList[0].ParentId))
+            {
+                RootID= SurveyBOList[0].SurveyId;
+            }
+            else
+            {
+                request.AnswerInfo.SurveyId = new Guid(SurveyBOList[0].ParentId);
+                GetRootFormId(request);
+            }           
+        }
+
+        public List<SurveyInfoBO> GetSurveyInfo(PreFilledAnswerRequest request)
+        {
+            Interfaces.DataInterfaces.ISurveyResponseDao SurveyResponseDao = new EntitySurveyResponseDao();
+            BLL.SurveyResponse Implementation = new BLL.SurveyResponse(SurveyResponseDao);
+            List<SurveyInfoBO> SurveyBOList = Implementation.GetSurveyInfo(request);//           
+            return SurveyBOList;
         }
 
         /// <summary>
@@ -166,14 +258,7 @@ namespace Epi.Web.SurveyAPI.Repository
             SurveyControlsResponse SurveyControlsResponse = new SurveyControlsResponse();
             SurveyControlsRequest surveyControlsRequest = new SurveyControlsRequest();
             surveyControlsRequest.SurveyId = request.SurveyId.ToString();
-            SurveyControlsResponse = GetSurveyControlsList(surveyControlsRequest);
-            Dictionary<string, string> FilteredAnswerList = new Dictionary<string, string>();
-            var radiolist = SurveyControlsResponse.SurveyControlList.Where(x => x.ControlType == "GroupBoxRadioList");
-            FilteredAnswerList = ProcessModforRadioControls(radiolist, request.SurveyQuestionAnswerListField);
-            var checkboxLsit = SurveyControlsResponse.SurveyControlList.Where(x => x.ControlType == "CheckBox");
-            FilteredAnswerList = ProcessValforCheckBoxControls(checkboxLsit, FilteredAnswerList);
-            var yesNoList = SurveyControlsResponse.SurveyControlList.Where(x => x.ControlType == "YesNo");
-            FilteredAnswerList = ProcessValforYesNoControls(yesNoList, FilteredAnswerList);
+
             try
             {
                 Interfaces.DataInterfaces.ISurveyResponseDao SurveyResponseDao = new EntitySurveyResponseDao();
@@ -184,6 +269,20 @@ namespace Epi.Web.SurveyAPI.Repository
                 prefilledanswerRequest.AnswerInfo.OrganizationKey = request.OrgKey;
                 prefilledanswerRequest.AnswerInfo.SurveyId = request.SurveyId;
                 prefilledanswerRequest.AnswerInfo.UserPublishKey = request.PublisherKey;
+                List<SurveyInfoBO> SurveyBOList = GetSurveyInfo(prefilledanswerRequest);
+                 GetRootFormId(prefilledanswerRequest);
+                prefilledanswerRequest.AnswerInfo.SurveyId = request.SurveyId;
+                SurveyControlsResponse = GetSurveyControlsList(surveyControlsRequest);
+                Dictionary<string, string> FilteredAnswerList = new Dictionary<string, string>();
+                var radiolist = SurveyControlsResponse.SurveyControlList.Where(x => x.ControlType == "GroupBoxRadioList");
+                FilteredAnswerList = ProcessModforRadioControls(radiolist, request.SurveyQuestionAnswerListField);
+                var checkboxLsit = SurveyControlsResponse.SurveyControlList.Where(x => x.ControlType == "CheckBox");
+                FilteredAnswerList = ProcessValforCheckBoxControls(checkboxLsit, FilteredAnswerList);
+                var yesNoList = SurveyControlsResponse.SurveyControlList.Where(x => x.ControlType == "YesNo");
+                FilteredAnswerList = ProcessValforYesNoControls(yesNoList, FilteredAnswerList);
+                var legalvalList = SurveyControlsResponse.SurveyControlList.Where(x => x.ControlType == "LegalValues");
+                FilteredAnswerList = ProcessValforLegalControls(legalvalList, FilteredAnswerList);
+
                 var updatedtime = FilteredAnswerList.Where(x => x.Key.ToLower() == "_updatestamp").FirstOrDefault();
                 var Responsekey = FilteredAnswerList.Where(x => x.Key.ToLower() == "responseid" || x.Key.ToLower() == "id").FirstOrDefault().Key;
                 var fkey = FilteredAnswerList.Where(x => x.Key.ToLower() == "fkey").FirstOrDefault();
@@ -213,8 +312,7 @@ namespace Epi.Web.SurveyAPI.Repository
 
                 prefilledanswerRequest.AnswerInfo.SurveyQuestionAnswerList = Values;
 
-                Dictionary<string, string> ErrorMessageList = new Dictionary<string, string>();
-                List<SurveyInfoBO> SurveyBOList = Implementation.GetSurveyInfo(prefilledanswerRequest);//
+                Dictionary<string, string> ErrorMessageList = new Dictionary<string, string>();               
                 string Xml = Implementation.CreateResponseXml(prefilledanswerRequest, SurveyBOList);//
                 ErrorMessageList = Implementation.ValidateResponse(SurveyBOList, prefilledanswerRequest);//
                 if (fkey.Key != null)

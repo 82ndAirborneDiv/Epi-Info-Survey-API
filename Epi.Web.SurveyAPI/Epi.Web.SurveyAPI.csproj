@@ -254,7 +254,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
@@ -349,6 +348,7 @@
     <Compile Include="Web.Common\DTO\OrganizationDTO.cs" />
     <Compile Include="Web.Common\DTO\PassCodeDTO.cs" />
     <Compile Include="Web.Common\DTO\PreFilledAnswerDTO.cs" />
+    <Compile Include="Web.Common\DTO\SourceTableDTO.cs" />
     <Compile Include="Web.Common\DTO\SurveyAnswerDTO.cs" />
     <Compile Include="Web.Common\DTO\SurveyControlDTO.cs" />
     <Compile Include="Web.Common\DTO\SurveyInfoDTO.cs" />
@@ -362,6 +362,7 @@
     <Compile Include="Web.Common\Message\OrganizationResponse.cs" />
     <Compile Include="Web.Common\Message\PreFilledAnswerRequest.cs" />
     <Compile Include="Web.Common\Message\PreFilledAnswerResponse.cs" />
+    <Compile Include="Web.Common\Message\SourceTablesResponse.cs" />
     <Compile Include="Web.Common\Message\SurveyControlsRequest.cs" />
     <Compile Include="Web.Common\Message\SurveyControlsResponse.cs" />
     <Compile Include="Web.Common\Message\SurveyInfoRequest.cs" />

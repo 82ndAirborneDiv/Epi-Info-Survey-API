@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Epi.Web.Common.DTO
+namespace Epi.Web.SurveyAPI.Web.Common.DTO
 {
     public class SourceTableDTO
     {
