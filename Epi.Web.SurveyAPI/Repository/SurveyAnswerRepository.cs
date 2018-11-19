@@ -117,7 +117,7 @@ namespace Epi.Web.SurveyAPI.Repository
                                 legalvals.Add(_SourceTableValue.Attributes().FirstOrDefault().Value.Trim());
                             }
                         }
-                        SurveyQuestionAnswerList[s.ControlId] = legalvals.ElementAt(Convert.ToInt32(val));
+                        SurveyQuestionAnswerList[s.ControlId] = legalvals.ElementAt(Convert.ToInt32(val)-1);
                     }
                 }
             }
